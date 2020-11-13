@@ -5,13 +5,17 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import application.ScheduleServiceView;
+import Views.ScheduleServiceView;
 
 import java.util.Date;
 
+import entities.Address;
 import entities.Customer;
 import entities.CustomerService;
+import entities.Employee;
+import entities.Service;
 import enums.CustomerServiceStatus;
+import enums.Status;
 
 public class CustomerServiceManager {
 	
@@ -43,6 +47,29 @@ public class CustomerServiceManager {
 
     public static void insert() throws ParseException {
       
+    	Date date = new Date(01/03/2000);
+
+    	Employee employee = new Employee("11", "joel", "11", "joel@");
+
+    	Address address = new Address("Taq", 99, "Taq", "RS");
+
+    	Customer customer1 = new Customer("22", "schein", "22", "schein@", date, "m", "c", Status.ACTIVE, address);
+
+    	Customer customer2 = new Customer("33", "otavio", "33", "otavio@", date, "m", "c", Status.ACTIVE, address);
+
+    	Customer customer3 = new Customer("43", "otávio", "43", "otavio@", date, "m", "c", Status.INACTIVE, address);
+
+    	Service service1 = new Service("arrumar");
+
+    	EmployeeManager.employeeList.add(employee);
+    	CustomerManager.customerList.add(customer1);
+    	CustomerManager.customerList.add(customer2);
+    	CustomerManager.customerList.add(customer3);
+
+    	ServiceManager.serviceList.add(service1);
+    	
+    	////////////
+    	
         CustomerService customerService = new CustomerService();
 
         readAndSetCustomerServiceDate(customerService);
@@ -51,7 +78,7 @@ public class CustomerServiceManager {
         
         readAndSetCustomerServiceDescription(customerService);
         
-    	readAndSetCustomerServiceStatus(customerService);
+    	//readAndSetCustomerServiceStatus(customerService);
 
     	readAndSetCustomerServiceCustomerName(customerService);
 
@@ -61,6 +88,7 @@ public class CustomerServiceManager {
 
         customerServiceList.add(customerService);
         
+        consult();
         
     }
     
@@ -71,7 +99,7 @@ public class CustomerServiceManager {
             System.out.println("Hour: " + sdf2.format(customerServiceList.get(i).getHourOfService()));
             System.out.println("Customer: " + customerServiceList.get(i).getCustomer().getName());
             System.out.println("Employee: " + customerServiceList.get(i).getEmployee().getName());
-            System.out.println("Status: " + customerServiceList.get(i).getStatus());
+            //System.out.println("Status: " + customerServiceList.get(i).getStatus());
             System.out.println("Description: " + customerServiceList.get(i).getDescription());
         }
     }
@@ -182,7 +210,7 @@ public class CustomerServiceManager {
     	
     protected static void readAndSetCustomerServiceDescription(CustomerService customerService){
 	    System.out.println("Type the service description: ");
-	    serviceDescription = ScheduleServiceView.textFieldDescription.getText();	
+	    serviceDescription = ScheduleServiceView.textFieldDescription.getText();
 	
 	    boolean verification = false;
 	    int j;
@@ -200,18 +228,22 @@ public class CustomerServiceManager {
 	}
     
     
-    protected static void readAndSetCustomerServiceStatus(CustomerService customerService){
-		
-    	System.out.println("Define the Customer Service status:  1 - SCHEDULED | 2 - FINISHED | 3 - CANCELED ");
-    	//optionStatus = ScheduleServiceView.comboBox.IndexOf();
+    protected static void readAndSetCustomerServiceStatus(CustomerService customerService) throws NullPointerException{
+		try {
+			System.out.println("Define the Customer Service status:  1 - SCHEDULED | 2 - FINISHED | 3 - CANCELED ");
+    		optionStatus = (String) ScheduleServiceView.comboBox.getSelectedItem();
+		} catch (NullPointerException e) {
+			System.out.println("Exception!!!" + e);
+		}
     	//optionStatus = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
-        if (optionStatus.equals("SCHEDULED")) {
-        	customerService.setStatus(CustomerServiceStatus.SCHEDULED);
-        } else if (optionStatus.equals("FINISHED")){
-        	customerService.setStatus(CustomerServiceStatus.FINISHED);
-        } else if (optionStatus.equals("CANCELED")){
-        	customerService.setStatus(CustomerServiceStatus.CANCELED);
-        }
+    	customerService.setServiceStatus(optionStatus);
+//        if (optionStatus.equals("SCHEDULED")) {
+//        	customerService.setServiceStatus(optionStatus);
+//        } else if (optionStatus.equals("FINISHED")){
+//        	customerService.setStatus(CustomerServiceStatus.FINISHED);
+//        } else if (optionStatus.equals("CANCELED")){
+//        	customerService.setStatus(CustomerServiceStatus.CANCELED);
+//        }
 	        	
 	    
 	}

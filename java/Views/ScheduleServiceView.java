@@ -1,4 +1,4 @@
-package application;
+package Views;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import manager.CustomerServiceManager;
+import manager.ServiceManager;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -31,7 +32,7 @@ public class ScheduleServiceView extends JFrame {
 	public static JTextField textFieldDescription;
 	public static JTextField textFieldCustomerCpf;
 	public static JTextField textFieldEmployeeCpf;
-	public static Object comboBox;
+	public static JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -97,6 +98,7 @@ public class ScheduleServiceView extends JFrame {
 		lblDescription.setBounds(10, 89, 80, 29);
 		contentPane.add(lblDescription);
 		
+		
 		JLabel lblStatus = new JLabel("Status:\r\n");
 		lblStatus.setBackground(new Color(240, 240, 240));
 		lblStatus.setHorizontalAlignment(SwingConstants.CENTER);
@@ -104,11 +106,11 @@ public class ScheduleServiceView extends JFrame {
 		lblStatus.setBounds(0, 128, 80, 29);
 		contentPane.add(lblStatus);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"SCHEDULED", "FINISHED", "CANCELED"}));
-		comboBox.setBounds(79, 134, 105, 23);
-		contentPane.add(comboBox);
+//		JComboBox comboBox = new JComboBox();
+//		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
+//		comboBox.setModel(new DefaultComboBoxModel(new String[] {"SCHEDULED", "FINISHED", "CANCELED"}));
+//		comboBox.setBounds(79, 134, 105, 23);
+//		contentPane.add(comboBox);
 		
 		JLabel lblCustomerCpf = new JLabel("Customer CPF:\r\n");
 		lblCustomerCpf.setHorizontalAlignment(SwingConstants.CENTER);
@@ -145,12 +147,8 @@ public class ScheduleServiceView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Schedule adicionado");
-				try {
-					CustomerServiceManager.insert();
-				} catch (ParseException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				//CustomerServiceManager.insert();
+				ServiceManager.insert();
 			}
 		});
 	}

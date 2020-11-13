@@ -7,12 +7,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Views.ModuleServiceView;
+import Views.ScheduleServiceView;
+import entities.Address;
+import entities.Customer;
+import entities.Employee;
+import entities.Service;
+import enums.Status;
 import manager.CustomerServiceManager;
 
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 import javax.swing.SwingConstants;
 
@@ -54,7 +62,7 @@ public class mainMenu extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("O bot�o foi clicado e o conte�do digitado pelo usu�rio.");
+				System.out.println("O botão foi clicado e o conteúdo digitado pelo usuário.");
 				ScheduleServiceView.main(null);
 			}
 		});
@@ -78,6 +86,13 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_2_1_1.setBounds(21, 206, 194, 75);
 		contentPane.add(btnNewButton_2_1_1);
+		btnNewButton_2_1_1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("O botão foi clicado e o conteúdo digitado pelo usuário.");
+				ModuleServiceView.main(null);
+			}
+		});
 		
 		JButton btnNewButton_2_1_2 = new JButton("Module Service Schedule ");
 		btnNewButton_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));

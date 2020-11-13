@@ -6,6 +6,9 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Views.ScheduleServiceView;
+import Views.ModuleServiceActionsView.InsertView;
+
 public class ServiceManager {
 
     public static ArrayList<Service> serviceList = new ArrayList<Service>();
@@ -19,6 +22,8 @@ public class ServiceManager {
         
         serviceList.add(service);
 
+        consult();
+        
         clearBuffer(reader);
     }
 
@@ -50,7 +55,8 @@ public class ServiceManager {
     
     private static void readAndSetServiceName(Service service) {
     	System.out.println("Type the service name: ");
-        serviceName = reader.nextLine();
+        //serviceName = reader.nextLine();
+    	serviceName = InsertView.textFieldServiceName.getText();
 
         service.setName(serviceName);
     }

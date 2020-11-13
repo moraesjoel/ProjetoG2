@@ -10,16 +10,17 @@ public class CustomerService {
 	private Customer customer;
 	private Employee employee;
 	private CustomerServiceStatus status;
+	private String serviceStatus;
 	private Service description;
 	
-	public CustomerService(Date dateOfService, Date hourOfService, Customer customer, Employee employee, CustomerServiceStatus status,
+	public CustomerService(Date dateOfService, Date hourOfService, Customer customer, Employee employee, String serviceStatus,
 			Service description) {
 		
 		this.dateOfService = dateOfService;
 		this.hourOfService = hourOfService;
 		this.customer = customer;
 		this.employee = employee;
-		this.status = status;
+		this.serviceStatus = serviceStatus;
 		this.description = description;
 	}
 	
@@ -67,6 +68,14 @@ public class CustomerService {
 		this.status = status;
 	}
 
+	public String getServiceStatus() {
+		return serviceStatus;
+	}
+
+	public void setServiceStatus(String serviceStatus) {
+		this.serviceStatus = serviceStatus;
+	}
+	
 	public Service getDescription() {
 		return description;
 	}
