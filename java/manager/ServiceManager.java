@@ -7,7 +7,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Views.ScheduleServiceView;
+import Views.ModuleServiceActionsView.EditView;
 import Views.ModuleServiceActionsView.InsertView;
+import Views.ModuleServiceActionsView.RemoveView;
 
 public class ServiceManager {
 
@@ -31,18 +33,23 @@ public class ServiceManager {
         for (int i = 0; i < serviceList.size(); i++) {
             System.out.println("\nService: " + serviceList.get(i).getName());
         }
+        if(serviceList.isEmpty()) {
+        	System.out.println("Lista de seriços vazia!");
+        }
     }
 
     public static void remove() {
         System.out.println("Type the service name to remove it: ");
-        String serviceNameToRemove = reader.nextLine();
+        //String serviceNameToRemove = reader.nextLine();
+        String serviceNameToRemove = RemoveView.textFieldServiceNameToRemove.getText();
 
         removeService(serviceNameToRemove);
     }
 
     public static void edit(){
         System.out.println("Type the service name to edit it: ");
-        String serviceNameToEdit = reader.nextLine();
+        //String serviceNameToEdit = reader.nextLine();
+        String serviceNameToEdit = EditView.textFieldServiceNameToEdit.getText();
         
         editServiceName(serviceNameToEdit);
     }
@@ -57,7 +64,7 @@ public class ServiceManager {
     	System.out.println("Type the service name: ");
         //serviceName = reader.nextLine();
     	serviceName = InsertView.textFieldServiceName.getText();
-
+    	System.out.println("Service Inserted.");
         service.setName(serviceName);
     }
     
@@ -66,9 +73,12 @@ public class ServiceManager {
             if (serviceList.get(i).getName().equals(name)) {
 
                 System.out.println("New service name: ");
-                String newServiceName = reader.nextLine();
+                //String newServiceName = reader.nextLine();
+                String newServiceName = EditView.textFieldNewServiceName.getText(); 
 
                 serviceList.get(i).setName(newServiceName);
+                
+                System.out.println("Service edited.");
 
             }
         }
@@ -78,6 +88,7 @@ public class ServiceManager {
     	for (int i = 0; i < serviceList.size(); i++) {
             if (serviceList.get(i).getName().equals(nameToRemove)) {
                 serviceList.remove(i);
+                System.out.println("Service removed.");
             }
         }
     }
