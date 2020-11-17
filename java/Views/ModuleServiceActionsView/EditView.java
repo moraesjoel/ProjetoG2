@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 
+import application.mainMenu;
 import manager.ServiceManager;
 
 import java.awt.Font;
@@ -51,7 +52,7 @@ public class EditView {
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("EDIT");
@@ -86,9 +87,12 @@ public class EditView {
 		frame.getContentPane().add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			
+			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Add new service!.");
+				System.out.println("Edit service!.");
 				ServiceManager.edit();
+				frame.dispose();
+				mainMenu.main(null);
 				//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});

@@ -6,10 +6,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Views.ScheduleServiceView;
 import Views.ModuleServiceActionsView.EditView;
 import Views.ModuleServiceActionsView.InsertView;
 import Views.ModuleServiceActionsView.RemoveView;
+import application.mainMenu;
 
 public class ServiceManager {
 
@@ -25,8 +25,8 @@ public class ServiceManager {
         serviceList.add(service);
 
         consult();
-        
-        clearBuffer(reader);
+                
+        //clearBuffer(reader);
     }
 
     public static void consult() {
@@ -34,7 +34,7 @@ public class ServiceManager {
             System.out.println("\nService: " + serviceList.get(i).getName());
         }
         if(serviceList.isEmpty()) {
-        	System.out.println("Lista de seriços vazia!");
+        	System.out.println("Lista de serviços vazia!");
         }
     }
 
@@ -60,12 +60,13 @@ public class ServiceManager {
         }
     }
     
-    private static void readAndSetServiceName(Service service) {
+    public static void readAndSetServiceName(Service service) {
     	System.out.println("Type the service name: ");
-        //serviceName = reader.nextLine();
+        mainMenu.main(null);
     	serviceName = InsertView.textFieldServiceName.getText();
     	System.out.println("Service Inserted.");
         service.setName(serviceName);
+     
     }
     
     private static void editServiceName(String name) {

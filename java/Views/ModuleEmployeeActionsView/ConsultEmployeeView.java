@@ -1,24 +1,23 @@
-package Views.ModuleServiceActionsView;
+package Views.ModuleEmployeeActionsView;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import application.mainMenu;
-import manager.ServiceManager;
-
-import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-public class ConsultView extends JFrame {
+import application.mainMenu;
+import manager.EmployeeManager;
+import manager.ServiceManager;
+
+public class ConsultEmployeeView extends JFrame {
 
 	private JPanel contentPane;
 
@@ -29,7 +28,7 @@ public class ConsultView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConsultView frame = new ConsultView();
+					ConsultEmployeeView frame = new ConsultEmployeeView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +40,7 @@ public class ConsultView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ConsultView() {
+	public ConsultEmployeeView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -55,7 +54,7 @@ public class ConsultView extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton("Consult Services");
+		JButton btnNewButton = new JButton("Consult employees");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBounds(131, 132, 176, 42);
 		contentPane.add(btnNewButton);
@@ -63,7 +62,7 @@ public class ConsultView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("CONSULT ACIONADO.");
-				ServiceManager.consult();
+				EmployeeManager.consult();
 				dispose();
 				mainMenu.main(null);
 			}

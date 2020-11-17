@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Views.ModuleServiceView;
+import application.mainMenu;
 import manager.ServiceManager;
 
 import javax.swing.JLabel;
@@ -43,7 +45,7 @@ public class InsertView extends JFrame {
 	 * Create the frame.
 	 */
 	public InsertView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -68,15 +70,18 @@ public class InsertView extends JFrame {
 		
 		JButton btnNewButton = new JButton("add service");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(174, 168, 101, 23);
+		btnNewButton.setBounds(131, 169, 201, 23);
 		contentPane.add(btnNewButton);
 		btnNewButton.addActionListener(new ActionListener() {
 			
+			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Add new service!.");
 				ServiceManager.insert();
-				setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				dispose();
+				mainMenu.main(null);
 			}
 		});
+		
 	}
 }

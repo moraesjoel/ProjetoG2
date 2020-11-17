@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Views.ModuleEmployeeView;
 import Views.ModuleServiceView;
 import Views.ScheduleServiceView;
 import entities.Address;
@@ -48,7 +49,7 @@ public class mainMenu extends JFrame {
 	 * Create the frame.
 	 */
 	public mainMenu() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 465, 350);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -76,6 +77,14 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_2_1.setBounds(21, 108, 194, 75);
 		contentPane.add(btnNewButton_2_1);
+		btnNewButton_2_1.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Acessando modulo Employee.");
+				dispose();
+				ModuleEmployeeView.main(null);
+			}
+		});
 		
 		JButton btnNewButton_2_2 = new JButton("Module Customer");
 		btnNewButton_2_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -90,7 +99,10 @@ public class mainMenu extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("O botão foi clicado e o conteúdo digitado pelo usuário.");
-				ModuleServiceView.main(null);
+				//setVisible(false);
+				dispose();
+				ModuleServiceView.main(null);				
+				
 			}
 		});
 		

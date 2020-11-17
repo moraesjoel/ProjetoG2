@@ -1,26 +1,27 @@
-package Views.ModuleServiceActionsView;
+package Views.ModuleEmployeeActionsView;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import java.awt.BorderLayout;
-import javax.swing.SwingConstants;
-
-import application.mainMenu;
-import manager.ServiceManager;
-
+import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-public class RemoveView {
+import Views.ModuleServiceActionsView.RemoveView;
+import application.mainMenu;
+import manager.EmployeeManager;
+
+public class RemoveEmployeeView extends JFrame {
 
 	private JFrame frame;
-	public static JTextField textFieldServiceNameToRemove;
+	public static JTextField textFieldEmployeeCpfToRemove;
 
 	/**
 	 * Launch the application.
@@ -29,7 +30,7 @@ public class RemoveView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RemoveView window = new RemoveView();
+					RemoveEmployeeView window = new RemoveEmployeeView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +42,7 @@ public class RemoveView {
 	/**
 	 * Create the application.
 	 */
-	public RemoveView() {
+	public RemoveEmployeeView() {
 		initialize();
 	}
 
@@ -60,17 +61,17 @@ public class RemoveView {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Service Name to Remove:");
+		JLabel lblNewLabel_1 = new JLabel("Employee CPF to remove");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1.setBounds(10, 113, 195, 14);
 		frame.getContentPane().add(lblNewLabel_1);
 		
-		textFieldServiceNameToRemove = new JTextField();
-		textFieldServiceNameToRemove.setBounds(200, 112, 224, 20);
-		frame.getContentPane().add(textFieldServiceNameToRemove);
-		textFieldServiceNameToRemove.setColumns(10);
+		textFieldEmployeeCpfToRemove = new JTextField();
+		textFieldEmployeeCpfToRemove.setBounds(200, 112, 224, 20);
+		frame.getContentPane().add(textFieldEmployeeCpfToRemove);
+		textFieldEmployeeCpfToRemove.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Remove Service");
+		JButton btnNewButton = new JButton("Remove employee");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBounds(145, 218, 151, 32);
 		frame.getContentPane().add(btnNewButton);
@@ -78,7 +79,7 @@ public class RemoveView {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("REMOVE ACIONADO.");
-				ServiceManager.remove();
+				EmployeeManager.remove();
 				frame.dispose();
 				mainMenu.main(null);
 			}

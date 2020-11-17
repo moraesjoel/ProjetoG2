@@ -2,25 +2,23 @@ package Views;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-
-import Views.ModuleServiceActionsView.ConsultView;
-import Views.ModuleServiceActionsView.EditView;
-import Views.ModuleServiceActionsView.InsertView;
-import Views.ModuleServiceActionsView.RemoveView;
-
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 
-public class ModuleServiceView extends JFrame {
+import Views.ModuleEmployeeActionsView.ConsultEmployeeView;
+import Views.ModuleEmployeeActionsView.EditEmployeeView;
+import Views.ModuleEmployeeActionsView.InsertEmployeeView;
+import Views.ModuleEmployeeActionsView.RemoveEmployeeView;
+
+public class ModuleEmployeeView extends JFrame {
 
 	private JPanel contentPane;
 
@@ -31,7 +29,7 @@ public class ModuleServiceView extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ModuleServiceView frame = new ModuleServiceView();
+					ModuleEmployeeView frame = new ModuleEmployeeView();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +41,7 @@ public class ModuleServiceView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ModuleServiceView() {
+	public ModuleEmployeeView() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -51,7 +49,7 @@ public class ModuleServiceView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("SERVICE MODULE");
+		JLabel lblNewLabel = new JLabel("EMPLOYEE MODULE");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 24));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(10, 11, 414, 32);
@@ -66,7 +64,7 @@ public class ModuleServiceView extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("INSERT ACIONADO.");
 				dispose();
-				InsertView.main(null);
+				InsertEmployeeView.main(null);
 	
 			}
 		});
@@ -79,7 +77,7 @@ public class ModuleServiceView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("CONSULT ACIONADO.");
-				ConsultView.main(null);
+				ConsultEmployeeView.main(null);
 			}
 		});
 		
@@ -91,7 +89,7 @@ public class ModuleServiceView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("EDIT ACIONADO.");
-				EditView.main(null);
+				EditEmployeeView.main(null);
 			}
 		});
 		
@@ -103,7 +101,7 @@ public class ModuleServiceView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("REMOVE ACIONADO.");
-				RemoveView.main(null);
+				RemoveEmployeeView.main(null);
 			}
 		});
 	}

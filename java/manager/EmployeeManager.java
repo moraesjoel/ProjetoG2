@@ -6,6 +6,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Views.ModuleEmployeeActionsView.EditEmployeeView;
+import Views.ModuleEmployeeActionsView.EmployeeEditMenuView;
+import Views.ModuleEmployeeActionsView.InsertEmployeeView;
+import Views.ModuleEmployeeActionsView.RemoveEmployeeView;
+
 public class EmployeeManager {
 
     public static ArrayList<Employee> employeeList = new ArrayList<Employee>();
@@ -23,7 +28,6 @@ public class EmployeeManager {
     }
 
     public static void insert() throws ParseException {
-        clearBuffer(reader);
         Employee employee = new Employee();
 
         readAndSetEmployeeName(employee);
@@ -33,9 +37,23 @@ public class EmployeeManager {
         readAndSetEmployeePhoneNumber(employee);
 
         readAndSetEmail(employee);
-
+        
         employeeList.add(employee);
+        
+        consult();
 
+    }
+    
+    public static void menuToEdit(Employee employee) throws ParseException {
+        readAndSetEmployeeNameEdit(employee);
+
+        readAndSetEmployeeCPFEdit(employee);
+
+        readAndSetEmployeePhoneNumberEdit(employee);
+
+        readAndSetEmailEdit(employee);
+        
+        consult();
     }
 
     public static void consult() {
@@ -48,47 +66,59 @@ public class EmployeeManager {
     }
 
     public static void remove() {
-        clearBuffer(reader);
-        System.out.println("Type the customer CPF to remove it: ");
-        String cpfEmployeeToRemove = reader.nextLine();
+        String cpfEmployeeToRemove = RemoveEmployeeView.textFieldEmployeeCpfToRemove.getText();
 
         removeCustomer(cpfEmployeeToRemove);
 
     }
 
     public static void edit() throws ParseException {
-        clearBuffer(reader);
-        System.out.println("Type the customer CPF to edit it: ");
-        String customerToEdit = reader.nextLine();
+        String customerToEdit = EditEmployeeView.textFieldEmployeeCpfEdit.getText();
 
         for (int i = 0; i < employeeList.size(); i++) {
             if (employeeList.get(i).getCpf().equals(customerToEdit) ) {
-                menuEdit(employeeList.get(i));
+            	menuToEdit(employeeList.get(i));
             }
         }
     }
 
     protected static void readAndSetEmployeeName(Employee employee) {
-        System.out.println("Type the employee name: ");
-        employeeName = reader.nextLine();
+        employeeName = InsertEmployeeView.textFieldEmployeeName.getText();
+        employee.setName(employeeName);
+    }
+    
+    protected static void readAndSetEmployeeNameEdit(Employee employee) {
+        employeeName = EmployeeEditMenuView.textFieldEmployeeName.getText();
         employee.setName(employeeName);
     }
 
     protected static void readAndSetEmployeeCPF(Employee employee){
-        System.out.println("Type the employee CPF: ");
-        employeeCpf = reader.nextLine();
+        employeeCpf = InsertEmployeeView.textFieldEmployeeCpf.getText();
+        employee.setCpf(employeeCpf);
+    }
+    
+    protected static void readAndSetEmployeeCPFEdit(Employee employee){
+        employeeCpf = EmployeeEditMenuView.textFieldEmployeeCpf.getText();
         employee.setCpf(employeeCpf);
     }
 
     protected static void readAndSetEmployeePhoneNumber(Employee employee){
-        System.out.println("Type the employee phone number: ");
-        employeePhoneNumber = reader.nextLine();
+        employeePhoneNumber = InsertEmployeeView.textFieldEmployeePhone.getText();
+        employee.setPhoneNumber(employeePhoneNumber);
+    }
+    
+    protected static void readAndSetEmployeePhoneNumberEdit(Employee employee){
+        employeePhoneNumber = EmployeeEditMenuView.textFieldEmployeePhone.getText();
         employee.setPhoneNumber(employeePhoneNumber);
     }
 
     protected static void readAndSetEmail(Employee employee){
-        System.out.println("Type the employee email: ");
-        employeeEmail = reader.nextLine();
+        employeeEmail = InsertEmployeeView.textFieldEmployeeEmail.getText();
+        employee.setEmail(employeeEmail);
+    }
+    
+    protected static void readAndSetEmailEdit(Employee employee){
+        employeeEmail = EmployeeEditMenuView.textFieldEmployeeEmail.getText();
         employee.setEmail(employeeEmail);
     }
 
@@ -100,7 +130,7 @@ public class EmployeeManager {
         }
     }
 
-    private static void menuEdit(Employee employee) throws ParseException {
+    /*private static void menuEdit(Employee employee) throws ParseException {
         int option = 1;
         int action = 1;
 
@@ -134,7 +164,7 @@ public class EmployeeManager {
             option = reader.nextInt();
 
         }
-    }
+    }*/
         public static void menuManager() throws ParseException {
             int option = 1;
             int action = 1;
