@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 
+import Views.ModuleServiceView;
 import application.mainMenu;
 import manager.ServiceManager;
 
@@ -92,7 +93,7 @@ public class EditView {
 				System.out.println("Edit service!.");
 				ServiceManager.edit();
 				frame.dispose();
-				mainMenu.main(null);
+				ModuleServiceView.main(null);
 				//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			}
 		});

@@ -6,10 +6,11 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Views.ScheduleServiceView;
+import Views.ModuleServiceActionsView.ConsultView;
 import Views.ModuleServiceActionsView.EditView;
 import Views.ModuleServiceActionsView.InsertView;
 import Views.ModuleServiceActionsView.RemoveView;
-import application.mainMenu;
 
 public class ServiceManager {
 
@@ -24,18 +25,22 @@ public class ServiceManager {
         
         serviceList.add(service);
 
-        consult();
-                
-        //clearBuffer(reader);
+        //consult();
     }
 
     public static void consult() {
-        for (int i = 0; i < serviceList.size(); i++) {
-            System.out.println("\nService: " + serviceList.get(i).getName());
-        }
+        String serviceNameFromList = "";
+    	
         if(serviceList.isEmpty()) {
-        	System.out.println("Lista de serviços vazia!");
+        	System.out.println("Lista de seriços vazia!");
+        } else {
+        	for (int i = 0; i < serviceList.size(); i++) {
+                System.out.println("\nService: " + serviceList.get(i).getName());
+                serviceNameFromList += "\n" + serviceList.get(i).getName() + " ";
+            }
         }
+        ConsultView.labelTextConsult.setText(serviceNameFromList);
+        
     }
 
     public static void remove() {
@@ -47,11 +52,11 @@ public class ServiceManager {
     }
 
     public static void edit(){
-        System.out.println("Type the service name to edit it: ");
+    	System.out.println("Editing... ");
         //String serviceNameToEdit = reader.nextLine();
-        String serviceNameToEdit = EditView.textFieldServiceNameToEdit.getText();
-        
-        editServiceName(serviceNameToEdit);
+		String serviceNameToEdit = EditView.textFieldServiceNameToEdit.getText();
+		editServiceName(serviceNameToEdit);
+		System.out.println("Success");
     }
 
     private static void clearBuffer(Scanner scanner) {
@@ -60,13 +65,12 @@ public class ServiceManager {
         }
     }
     
-    public static void readAndSetServiceName(Service service) {
+    private static void readAndSetServiceName(Service service) {
     	System.out.println("Type the service name: ");
-        mainMenu.main(null);
+        //serviceName = reader.nextLine();
     	serviceName = InsertView.textFieldServiceName.getText();
     	System.out.println("Service Inserted.");
         service.setName(serviceName);
-     
     }
     
     private static void editServiceName(String name) {

@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import Views.ModuleServiceView;
 import application.mainMenu;
+import manager.EmployeeManager;
 import manager.ServiceManager;
 
 import javax.swing.JLabel;
@@ -77,9 +78,15 @@ public class InsertView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Add new service!.");
-				ServiceManager.insert();
-				dispose();
-				mainMenu.main(null);
+				try {
+					ServiceManager.insert();
+					dispose();
+					ModuleServiceView.main(null);
+				} catch (NullPointerException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+								
 			}
 		});
 		
