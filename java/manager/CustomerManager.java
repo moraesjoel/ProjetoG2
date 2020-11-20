@@ -60,7 +60,7 @@ public class CustomerManager {
     	customerList.add(customer);
     	
     	
-        //clearBuffer(reader);
+       // clearBuffer(reader);
     }
     
     public static void consult() {
@@ -85,7 +85,7 @@ public class CustomerManager {
     }
     
     public static void remove() {
-		clearBuffer(reader);
+		//clearBuffer(reader);
         System.out.println("Type the customer CPF to remove it: ");
         String costumerToRemove = reader.nextLine();
 
@@ -104,11 +104,11 @@ public class CustomerManager {
         }
     }
     
-    private static void clearBuffer(Scanner scanner) {
-        if (scanner.hasNextLine()) {
-            scanner.nextLine();
-        }
-    }
+//    private static void clearBuffer(Scanner scanner) {
+//        if (scanner.hasNextLine()) {
+//            scanner.nextLine();
+//        }
+//    }
     
     private static void removeCustomer(String cpfToRemove) {
     	for (int i = 0; i < customerList.size(); i++) {
@@ -169,21 +169,21 @@ public class CustomerManager {
 	}
 	
 	protected static void readAndSetAddress(Customer customer){
-		clearBuffer(reader);
+		//clearBuffer(reader);
 		System.out.println("Type the customer address: ");
 	    
 	    System.out.println("Street: ");
-	    addressStreet = reader.nextLine();
+	    addressStreet = InsertCustomerView.textFieldAddressStreet.getText();
 	    
 	    System.out.println("Number: ");
-	    addressNumber = reader.nextInt();
-		clearBuffer(reader);
+	    addressNumber = Integer.parseInt(InsertCustomerView.textFieldAddressNumber.getText());
+//		clearBuffer(reader);
 
 	    System.out.println("City: ");
-	    addressCity = reader.nextLine();
+	    addressCity = InsertCustomerView.textFieldAddressCity.getText();
 	    
 	    System.out.println("State: ");
-	    addressState = reader.nextLine();
+	    addressState = InsertCustomerView.textFieldAddressState.getText();
 	    
 	    Address customerAddress = new Address(addressStreet, addressNumber, addressCity, addressState);
         customer.setAddress(customerAddress);
@@ -266,7 +266,7 @@ public class CustomerManager {
 				
 				action = reader.nextInt();
 				
-				clearBuffer(reader);
+//				clearBuffer(reader);
 				
 				switch (action) {
 					case 1:
@@ -323,7 +323,7 @@ public class CustomerManager {
 
             action = reader.nextInt();
 
-            clearBuffer(reader);
+//            clearBuffer(reader);
 
             switch (action) {
                 case 1:

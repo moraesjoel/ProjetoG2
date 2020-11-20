@@ -31,10 +31,10 @@ public class InsertCustomerView {
 	public static JTextField textFieldEmail;
 	public static JTextField textFieldMaritalStatus;
 	public static JComboBox comboBox;
-	private JTextField textFieldAddressStreet;
-	private JTextField textFieldAddressNumber;
-	private JTextField textFieldAddressCity;
-	private JTextField textFieldAddressState;
+	public static JTextField textFieldAddressStreet;
+	public static JTextField textFieldAddressNumber;
+	public static JTextField textFieldAddressCity;
+	public static JTextField textFieldAddressState;
 
 	/**
 	 * Launch the application.
