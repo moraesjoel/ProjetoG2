@@ -53,11 +53,11 @@ public class CustomerServiceManager {
 
     	Address address = new Address("Taq", 99, "Taq", "RS");
 
-    	Customer customer1 = new Customer("22", "schein", "22", "schein@", date, "m", "c", Status.ACTIVE, address);
+    	Customer customer1 = new Customer("22", "schein", "22", "schein@", date, "m", "c", "ACTIVE", address);
 
-    	Customer customer2 = new Customer("33", "otavio", "33", "otavio@", date, "m", "c", Status.ACTIVE, address);
+    	Customer customer2 = new Customer("33", "otavio", "33", "otavio@", date, "m", "c", "ACTIVE", address);
 
-    	Customer customer3 = new Customer("43", "otávio", "43", "otavio@", date, "m", "c", Status.INACTIVE, address);
+    	Customer customer3 = new Customer("43", "otávio", "43", "otavio@", date, "m", "c", "INACTIVE", address);
 
     	Service service1 = new Service("arrumar");
 

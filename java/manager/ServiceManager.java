@@ -32,7 +32,7 @@ public class ServiceManager {
         String serviceNameFromList = "";
     	
         if(serviceList.isEmpty()) {
-        	System.out.println("Lista de seriços vazia!");
+        	serviceNameFromList = "Lista de seriços vazia!";
         } else {
         	for (int i = 0; i < serviceList.size(); i++) {
                 System.out.println("\nService: " + serviceList.get(i).getName());

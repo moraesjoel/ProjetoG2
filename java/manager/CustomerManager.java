@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import Views.ModuleCustomerView;
+import Views.ScheduleServiceView;
+import Views.ModuleCustomerActionsView.InsertCustomerView;
+
 public class CustomerManager {
 
     public static ArrayList<Customer> customerList = new ArrayList<Customer>();
@@ -25,7 +29,7 @@ public class CustomerManager {
     static int addressNumber;
     static String addressCity;
     static String addressState;
-    static int optionStatus;
+    static String optionStatus;
     static String customerServiceCpf;
     
     static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -49,13 +53,14 @@ public class CustomerManager {
     	
     	readAndSetMaritalStatus(customer);
     	
-    	readAndSetStatus(customer);
+    	//readAndSetStatus(customer);
     	
     	readAndSetAddress(customer);
     	
     	customerList.add(customer);
-
-        clearBuffer(reader);
+    	
+    	
+        //clearBuffer(reader);
     }
     
     public static void consult() {
@@ -114,58 +119,53 @@ public class CustomerManager {
     }
     
     protected static void readAndSetCustomerName(Customer customer) {
-    	System.out.println("Type the customer name: ");
-        customerName = reader.nextLine();
+    	customerName = InsertCustomerView.textFieldName.getText();
         customer.setName(customerName);
     }
     
 	protected static void readAndSetCustomerCPF(Customer customer){
-        System.out.println("Type the customer CPF: ");
-        customerCPF = reader.nextLine();	
+        customerCPF = InsertCustomerView.textFieldCpf.getText();
         customer.setCpf(customerCPF);
 	}
 	
 	protected static void readAndSetCustomerPhoneNumber(Customer customer){
-		System.out.println("Type the customer phone number: ");
-	    customerPhoneNumber = reader.nextLine();	
+	    customerPhoneNumber = InsertCustomerView.textFieldPhoneNumber.getText();
         customer.setPhoneNumber(customerPhoneNumber);
 	}
 	
 	protected static void readAndSetCustomerBirthday(Customer customer) throws ParseException{
-	    System.out.println("Type the customer birthday: ");
-	    customerBirthdayString = reader.nextLine();	
+	    customerBirthdayString = InsertCustomerView.textFieldBirthday.getText();
         customerBirthday = sdf.parse(customerBirthdayString);
         customer.setBirthday(customerBirthday);
 	}
 	
 	protected static void readAndSetCustomerGender(Customer customer){
-		System.out.println("Type the customer gender: ");
-        customerGender = reader.nextLine();	
+        customerGender = InsertCustomerView.textFieldGender.getText();
         customer.setGender(customerGender);
 	}
 	
 	protected static void readAndSetEmail(Customer customer){
-		System.out.println("Type the customer email: ");
-	    customerEmail = reader.nextLine();	
+	    customerEmail = InsertCustomerView.textFieldEmail.getText();
         customer.setEmail(customerEmail);
 	}
 	
 	protected static void readAndSetMaritalStatus(Customer customer){
-		System.out.println("Type the customer marital status: ");
-	    customerMaritalStatus = reader.nextLine();
+	    customerMaritalStatus = InsertCustomerView.textFieldMaritalStatus.getText();
         customer.setMaritalStatus(customerMaritalStatus);
 	}
 	
 	protected static void readAndSetStatus(Customer customer){
-		do {
-	    	System.out.println("Define the customer status:  1 - ACTIVE | 2 - INACTIVE ");
-	    	optionStatus = reader.nextInt();
-	        if (optionStatus == 1) {
-	        	customer.setStatus(Status.ACTIVE);
-	        } else if (optionStatus == 2){
-	        	customer.setStatus(Status.INACTIVE);
-	        }
-	    } while (optionStatus > 2 || optionStatus < 1);
+		optionStatus = (String) InsertCustomerView.comboBox.getSelectedItem();
+		customer.setStatus(optionStatus);
+//		do {
+//	    	System.out.println("Define the customer status:  1 - ACTIVE | 2 - INACTIVE ");
+//	    	optionStatus = reader.nextInt();
+//	        if (optionStatus == 1) {
+//	        	customer.setStatus(Status.ACTIVE);
+//	        } else if (optionStatus == 2){
+//	        	customer.setStatus(Status.INACTIVE);
+//	        }
+//	    } while (optionStatus > 2 || optionStatus < 1);
 	}
 	
 	protected static void readAndSetAddress(Customer customer){
@@ -215,7 +215,7 @@ public class CustomerManager {
 	public static void consultActive() {
     	
         for (int i = 0; i < customerList.size(); i++) {
-        	if(customerList.get(i).getStatus() == Status.ACTIVE) {
+        	if(customerList.get(i).getStatus().equals("ACTIVE")) {
         		System.out.println("\nName: " + customerList.get(i).getName());
                 System.out.println("CPF: " + customerList.get(i).getCpf());
                 System.out.println("Phone Number: " + customerList.get(i).getPhoneNumber());
@@ -237,7 +237,7 @@ public class CustomerManager {
 	public static void consultInactive() {
     	
         for (int i = 0; i < customerList.size(); i++) {
-        	if(customerList.get(i).getStatus() == Status.INACTIVE) {
+        	if(customerList.get(i).getStatus().equals("INACTIVE")) {
         		System.out.println("\nName: " + customerList.get(i).getName());
                 System.out.println("CPF: " + customerList.get(i).getCpf());
                 System.out.println("Phone Number: " + customerList.get(i).getPhoneNumber());

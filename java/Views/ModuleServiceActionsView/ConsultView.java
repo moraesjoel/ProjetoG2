@@ -1,6 +1,5 @@
 package Views.ModuleServiceActionsView;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -17,15 +16,11 @@ import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
-import javax.swing.JScrollBar;
-import javax.swing.JPasswordField;
 
 public class ConsultView extends JFrame {
 
 	private JPanel contentPane;
 	public static JLabel labelTextConsult;
-	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
