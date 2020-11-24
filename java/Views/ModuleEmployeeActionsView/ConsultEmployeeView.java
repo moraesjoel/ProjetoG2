@@ -64,7 +64,8 @@ public class ConsultEmployeeView extends JFrame {
 		btnNewButton.setBounds(78, 201, 176, 52);
 		contentPane.add(btnNewButton);
 		
-		JButton btnNewButtonMenu = new JButton("Back to menu");
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		btnNewButtonMenu.setBounds(277, 209, 105, 34);
 		contentPane.add(btnNewButtonMenu);
 		
@@ -79,6 +80,7 @@ public class ConsultEmployeeView extends JFrame {
 		btnNewButtonMenu.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				mainMenu.main(null);
 			}
 		});

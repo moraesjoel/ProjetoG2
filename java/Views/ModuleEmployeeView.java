@@ -17,6 +17,7 @@ import Views.ModuleEmployeeActionsView.ConsultEmployeeView;
 import Views.ModuleEmployeeActionsView.EditEmployeeView;
 import Views.ModuleEmployeeActionsView.InsertEmployeeView;
 import Views.ModuleEmployeeActionsView.RemoveEmployeeView;
+import application.mainMenu;
 
 public class ModuleEmployeeView extends JFrame {
 
@@ -76,6 +77,7 @@ public class ModuleEmployeeView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("CONSULT ACIONADO.");
+				dispose();
 				ConsultEmployeeView.main(null);
 			}
 		});
@@ -88,6 +90,7 @@ public class ModuleEmployeeView extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("EDIT ACIONADO.");
+				dispose();
 				EditEmployeeView.main(null);
 			}
 		});
@@ -96,10 +99,26 @@ public class ModuleEmployeeView extends JFrame {
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRemove.setBounds(228, 147, 168, 51);
 		contentPane.add(btnRemove);
+		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		btnNewButtonMenu.setBounds(168, 232, 85, 21);
+		contentPane.add(btnNewButtonMenu);
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Back to menu.");
+				dispose();
+				mainMenu.main(null);	
+			}
+		});
+		
 		btnRemove.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("REMOVE ACIONADO.");
+				dispose();
 				RemoveEmployeeView.main(null);
 			}
 		});

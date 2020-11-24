@@ -60,6 +60,25 @@ public class EmployeeEditMenuView extends JFrame {
 		lblNewLabel.setBounds(0, 69, 80, 29);
 		contentPane.add(lblNewLabel);
 		
+		JButton btnEditName = new JButton("Edit name");
+		btnEditName.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEditName.setBounds(241, 73, 99, 23);
+		contentPane.add(btnEditName);
+		
+		btnEditName.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Edit name.");
+				try {
+					EmployeeManager.editOnlyName();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		textFieldEmployeeName = new JTextField();
 		textFieldEmployeeName.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldEmployeeName.setBounds(79, 72, 154, 27);
@@ -74,6 +93,25 @@ public class EmployeeEditMenuView extends JFrame {
 		lblHour.setBounds(0, 120, 80, 29);
 		contentPane.add(lblHour);
 		
+		JButton btnEditCpf = new JButton("Edit CPF");
+		btnEditCpf.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEditCpf.setBounds(241, 124, 99, 23);
+		contentPane.add(btnEditCpf);
+		
+		btnEditCpf.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Edit CPF.");
+				try {
+					EmployeeManager.editOnlyCpf();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		textFieldEmployeeCpf = new JTextField();
 		textFieldEmployeeCpf.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldEmployeeCpf.setColumns(10);
@@ -83,7 +121,7 @@ public class EmployeeEditMenuView extends JFrame {
 		textFieldEmployeeEmail = new JTextField();
 		textFieldEmployeeEmail.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldEmployeeEmail.setColumns(10);
-		textFieldEmployeeEmail.setBounds(79, 181, 279, 27);
+		textFieldEmployeeEmail.setBounds(79, 181, 241, 27);
 		contentPane.add(textFieldEmployeeEmail);
 		
 		JLabel lblDescription = new JLabel("Email:");
@@ -91,6 +129,25 @@ public class EmployeeEditMenuView extends JFrame {
 		lblDescription.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblDescription.setBounds(0, 178, 80, 29);
 		contentPane.add(lblDescription);
+		
+		JButton btnEditEmail = new JButton("Edit Email");
+		btnEditEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEditEmail.setBounds(327, 182, 99, 23);
+		contentPane.add(btnEditEmail);
+		
+		btnEditEmail.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Edit CPF.");
+				try {
+					EmployeeManager.editOnlyEmail();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		
 		
 		JLabel lblStatus = new JLabel("Phone Number:");
@@ -100,10 +157,29 @@ public class EmployeeEditMenuView extends JFrame {
 		lblStatus.setBounds(0, 233, 116, 29);
 		contentPane.add(lblStatus);
 		
+		JButton btnEditPhone = new JButton("Edit Phone");
+		btnEditPhone.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnEditPhone.setBounds(313, 236, 113, 23);
+		contentPane.add(btnEditPhone);
+		
+		btnEditPhone.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Edit CPF.");
+				try {
+					EmployeeManager.editOnlyPhoneNumber();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		textFieldEmployeePhone = new JTextField();
 		textFieldEmployeePhone.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		textFieldEmployeePhone.setColumns(10);
-		textFieldEmployeePhone.setBounds(126, 235, 187, 27);
+		textFieldEmployeePhone.setBounds(112, 235, 187, 27);
 		contentPane.add(textFieldEmployeePhone);
 		
 		JLabel lblNewLabel_1 = new JLabel("EDIT");
@@ -112,10 +188,23 @@ public class EmployeeEditMenuView extends JFrame {
 		lblNewLabel_1.setBounds(175, 10, 116, 38);
 		contentPane.add(lblNewLabel_1);
 		
-		JButton btnAddEmployee = new JButton("Edit the employee selected.");
+		JButton btnAddEmployee = new JButton("Edit all the employee's info");
 		btnAddEmployee.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnAddEmployee.setBounds(112, 288, 211, 23);
+		btnAddEmployee.setBounds(79, 289, 211, 23);
 		contentPane.add(btnAddEmployee);
+		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnNewButtonMenu.setBounds(322, 292, 85, 21);
+		contentPane.add(btnNewButtonMenu);
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Back to menu.");
+				dispose();
+				mainMenu.main(null);	
+			}
+		});
 		
 		btnAddEmployee.addActionListener(new ActionListener() {
 			@Override

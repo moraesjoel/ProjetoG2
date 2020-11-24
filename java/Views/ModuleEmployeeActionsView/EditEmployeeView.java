@@ -83,6 +83,19 @@ public class EditEmployeeView extends JFrame {
 		textFieldEmployeeCpfEdit.setColumns(10);
 		textFieldEmployeeCpfEdit.setBounds(165, 84, 236, 20);
 		contentPane.add(textFieldEmployeeCpfEdit);
+		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButtonMenu.setBounds(316, 184, 85, 21);
+		contentPane.add(btnNewButtonMenu);
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				mainMenu.main(null);
+			}
+		});
 	}
 
 }

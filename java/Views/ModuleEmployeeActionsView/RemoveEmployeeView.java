@@ -61,6 +61,7 @@ public class RemoveEmployeeView extends JFrame {
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		frame.getContentPane().add(lblNewLabel);
 		
+		
 		JLabel lblNewLabel_1 = new JLabel("Employee CPF to remove");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblNewLabel_1.setBounds(10, 113, 195, 14);
@@ -73,8 +74,21 @@ public class RemoveEmployeeView extends JFrame {
 		
 		JButton btnNewButton = new JButton("Remove employee");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(145, 218, 151, 32);
+		btnNewButton.setBounds(142, 221, 151, 32);
 		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButtonMenu.setBounds(316, 229, 85, 21);
+		frame.getContentPane().add(btnNewButtonMenu);
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				mainMenu.main(null);
+			}
+		});
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -84,6 +98,7 @@ public class RemoveEmployeeView extends JFrame {
 				mainMenu.main(null);
 			}
 		});
+		
 	}
 
 }

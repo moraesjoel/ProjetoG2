@@ -102,8 +102,10 @@ public class ModuleServiceView extends JFrame {
 		contentPane.add(btnRemove);
 		
 		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnNewButtonMenu.setBounds(168, 232, 85, 21);
 		contentPane.add(btnNewButtonMenu);
+		
 		btnRemove.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -115,6 +117,7 @@ public class ModuleServiceView extends JFrame {
 		btnNewButtonMenu.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				mainMenu.main(null);
 			}
 		});

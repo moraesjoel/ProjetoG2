@@ -121,6 +121,19 @@ public class InsertEmployeeView extends JFrame {
 		btnAddEmployee.setBounds(112, 288, 201, 23);
 		contentPane.add(btnAddEmployee);
 		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnNewButtonMenu.setBounds(323, 288, 85, 21);
+		contentPane.add(btnNewButtonMenu);
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				mainMenu.main(null);
+			}
+		});
+		
 		btnAddEmployee.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
