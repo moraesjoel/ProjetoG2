@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Views.ModuleCustomerView;
 import Views.ModuleEmployeeView;
 import Views.ModuleServiceView;
 import Views.ScheduleServiceView;
@@ -90,6 +91,14 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_2.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_2_2.setBounds(234, 108, 194, 75);
 		contentPane.add(btnNewButton_2_2);
+		btnNewButton_2_2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Acessando modulo Customer.");
+				dispose();
+				ModuleCustomerView.main(null);
+			}
+		});
 		
 		JButton btnNewButton_2_1_1 = new JButton("Module Service");
 		btnNewButton_2_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));

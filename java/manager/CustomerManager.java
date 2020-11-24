@@ -10,8 +10,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
+import javax.swing.JTextField;
+
 import Views.ModuleCustomerView;
 import Views.ScheduleServiceView;
+import Views.ModuleCustomerActionsView.EditCustomerMenuView;
+import Views.ModuleCustomerActionsView.EditCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
 
 public class CustomerManager {
@@ -26,7 +30,7 @@ public class CustomerManager {
     static String customerGender;
     static String customerMaritalStatus;
     static String addressStreet;
-    static int addressNumber;
+    static String addressNumber;
     static String addressCity;
     static String addressState;
     static String optionStatus;
@@ -53,7 +57,7 @@ public class CustomerManager {
     	
     	readAndSetMaritalStatus(customer);
     	
-    	//readAndSetStatus(customer);
+    	readAndSetStatus(customer);
     	
     	readAndSetAddress(customer);
     	
@@ -82,6 +86,8 @@ public class CustomerManager {
             System.out.println("\n -------------------------------------");
 
         }
+        
+        
     }
     
     public static void remove() {
@@ -95,11 +101,12 @@ public class CustomerManager {
     
     public static void edit() throws ParseException{
         System.out.println("Type the customer CPF to edit it: ");
-        String customerToEdit = reader.nextLine();
 
+        String customerToEdit = EditCustomerView.textFieldCpfToEdit.getText();
+        
         for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getCpf().equals(customerToEdit) ) {
-            	menuEdit(customerList.get(i));
+            	editAction(customerList.get(i));
             }
         }
     }
@@ -155,17 +162,12 @@ public class CustomerManager {
 	}
 	
 	protected static void readAndSetStatus(Customer customer){
-		optionStatus = (String) InsertCustomerView.comboBox.getSelectedItem();
-		customer.setStatus(optionStatus);
-//		do {
-//	    	System.out.println("Define the customer status:  1 - ACTIVE | 2 - INACTIVE ");
-//	    	optionStatus = reader.nextInt();
-//	        if (optionStatus == 1) {
-//	        	customer.setStatus(Status.ACTIVE);
-//	        } else if (optionStatus == 2){
-//	        	customer.setStatus(Status.INACTIVE);
-//	        }
-//	    } while (optionStatus > 2 || optionStatus < 1);
+		try {
+			optionStatus = (String) InsertCustomerView.comboBox.getSelectedItem();
+			customer.setStatus(optionStatus);
+		} catch (NullPointerException e) {
+			System.out.println("Exception!!!" + e);
+		}
 	}
 	
 	protected static void readAndSetAddress(Customer customer){
@@ -176,7 +178,7 @@ public class CustomerManager {
 	    addressStreet = InsertCustomerView.textFieldAddressStreet.getText();
 	    
 	    System.out.println("Number: ");
-	    addressNumber = Integer.parseInt(InsertCustomerView.textFieldAddressNumber.getText());
+	    addressNumber = InsertCustomerView.textFieldAddressNumber.getText();
 //		clearBuffer(reader);
 
 	    System.out.println("City: ");
@@ -256,108 +258,89 @@ public class CustomerManager {
         }
     }
 	
-	private static void menuEdit(Customer customer) throws ParseException {
-		 int option = 1;
-		 int action = 1;
-
-		 while (option == 1) {
-				System.out.println("Choose the option: 1 - Edit name | 2 - Edit CPF | 3 - Edit Phone Number | 4 - Edit birthday | "
-						+ "5 - Edit gender | 6 - Edit address | 7 - Edit email | 8 - Edit marital status | 9 - Edit status");
-				
-				action = reader.nextInt();
-				
-//				clearBuffer(reader);
-				
-				switch (action) {
-					case 1:
-						readAndSetCustomerName(customer);
-						break;
-						
-					case 2:
-						readAndSetCustomerCPF(customer);
-						break;
-						
-					case 3:
-						readAndSetCustomerPhoneNumber(customer);
-						break;
-						
-					case 4:
-						readAndSetCustomerBirthday(customer);
-						break;
-						
-					case 5:
-				    	readAndSetCustomerGender(customer);
-						break;
-						
-					case 6:
-						readAndSetAddress(customer);
-						break;	
-						
-					case 7:
-						readAndSetEmail(customer);
-						break;
-						
-					case 8:
-				    	readAndSetMaritalStatus(customer);
-						break;
-						
-					case 9:
-				    	readAndSetStatus(customer);
-						break;
-				    	
-				}
-				
-				System.out.println("Do you want to leave from the edit mode? 1 - NO  2 - YES ");
-				option = reader.nextInt();
-				
-			}
-	 }
+	public static void editAction(Customer customer) {
+		
+		
+		String newName = EditCustomerMenuView.textFieldName.getText();
+		String newCpf = EditCustomerMenuView.textFieldCpf.getText();
+		String newPhoneNumber = EditCustomerMenuView.textFieldPhoneNumber.getText();
+		
+		String newBirthday = EditCustomerMenuView.textFieldBirthday.getText();
+		 try {
+			 customerBirthday = sdf.parse(newBirthday);
+		 } catch (ParseException e) {
+			 e.printStackTrace();
+		 }
 	
-	public static void menuManager() throws ParseException {
-        int option = 1;
-        int action = 1;
-
-        while (option == 1) {
-            System.out.println("\n| 1 - Add Customer \n| 2 - Consult Customer \n| 3 - Remove Customer \n| 4 - Edit Customer \n| "
-            		+ "5 - Consult active customers \n| 6 - Consult inactive customers \n| 7 - Consult services related to customer \n");
-
-            action = reader.nextInt();
-
-//            clearBuffer(reader);
-
-            switch (action) {
-                case 1:
-                    insert();
-                    break;
-
-                case 2:
-                    consult();
-                    break;
-
-                case 3:
-                    remove();
-                    break;
-
-                case 4:
-                    edit();
-                    break;
-                    
-                case 5:
-                    consultActive();
-                    break;
-                case 6:
-                    consultInactive();
-                    break;
-                case 7:
-                	readCpfToconsultServicesRelatedToCustomer();
-                	break;
-
+		String newGender = EditCustomerMenuView.textFieldGender.getText();
+		String newEmail = EditCustomerMenuView.textFieldEmail.getText();
+		String newMaritalStatus = EditCustomerMenuView.textFieldMaritalStatus.getText();
+		String newAddressStreet = EditCustomerMenuView.textFieldAddressStreet.getText();
+		String newAddressNumber = EditCustomerMenuView.textFieldAddressNumber.getText();
+		String newAddressCity = EditCustomerMenuView.textFieldAddressCity.getText();
+		String newAddressState = EditCustomerMenuView.textFieldAddressState.getText();		
+		
+		customer.setName(newName);
+		customer.setCpf(newName);
+		customer.setPhoneNumber(newName);
+		customer.setBirthday(customerBirthday);
+		customer.setGender(newGender);
+		customer.setEmail(newEmail);
+		customer.setMaritalStatus(newMaritalStatus);
+		
+		Address newAddress = new Address(newAddressStreet, newAddressNumber, newAddressCity, newAddressState);
+		customer.setAddress(newAddress);
+	}
+	
+	public static void readAndSetEditName() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewName = EditCustomerMenuView.textFieldName.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setName(customerNewName);
             }
-
-            System.out.println("Do you want to leave from the Customer mode? 1 - NO  2 - YES ");
-            option = reader.nextInt();
-
-    }
+        }
+	}
+	
+	public static void readAndSetEditCpf() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewCpf = EditCustomerMenuView.textFieldCpf.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setCpf(customerNewCpf);
+            }
+        }
+	}
+	
+	public static void readAndSetEditPhoneNumber() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewPohneNumber = EditCustomerMenuView.textFieldCpf.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setPhoneNumber(customerNewPohneNumber);
+            }
+        }
+	}
+	
+	public static void readAndSetEditPhoneBirthday() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewBirthday = EditCustomerMenuView.textFieldBirthday.getText();
+		
+		try {
+			 customerBirthday = sdf.parse(customerNewBirthday);
+		 } catch (ParseException e) {
+			 e.printStackTrace();
+		 }
+		
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setBirthday(customerBirthday);
+            }
+        }
 	}
 	    
 }

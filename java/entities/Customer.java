@@ -14,12 +14,13 @@ public class Customer {
     private Date birthday;
     private String gender;
     private String maritalStatus;
-    private Status status;
+    private String status;
+    //private Status status;
     private Address address;
     
     public static ArrayList<Service> serviceListForCustomer = new ArrayList<Service>();
 
-    public Customer(String cpf, String name, String phoneNumber, String email, Date birthday, String gender, String maritalStatus, Status status, Address address) {
+    public Customer(String cpf, String name, String phoneNumber, String email, Date birthday, String gender, String maritalStatus, String status, Address address) {
         this.cpf = cpf;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -90,11 +91,11 @@ public class Customer {
         this.maritalStatus = maritalStatus;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

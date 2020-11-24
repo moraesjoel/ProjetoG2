@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import Views.ModuleCustomerActionsView.ConsultCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
 import manager.CustomerManager;
 
@@ -83,7 +84,7 @@ public class ModuleCustomerView {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Acessando modulo Employee.");
-				CustomerManager.consult();
+				ConsultCustomerView.main(null);
 			}
 		});
 		

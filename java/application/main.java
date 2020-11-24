@@ -48,7 +48,7 @@ public class main {
 					break;
 					
 				case 4:
-					CustomerManager.menuManager();
+					//CustomerManager.menuManager();
 					break;
 					
 				case 5:

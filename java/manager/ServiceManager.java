@@ -4,6 +4,7 @@ import entities.Service;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import Views.ScheduleServiceView;
@@ -30,16 +31,20 @@ public class ServiceManager {
 
     public static void consult() {
         String serviceNameFromList = "";
-    	
+    	//List<String> snl = new ArrayList<>();
         if(serviceList.isEmpty()) {
         	serviceNameFromList = "Lista de seriços vazia!";
         } else {
         	for (int i = 0; i < serviceList.size(); i++) {
                 System.out.println("\nService: " + serviceList.get(i).getName());
                 serviceNameFromList += "\n" + serviceList.get(i).getName() + " ";
+                //snl.add(serviceList.get(i).getName());
             }
         }
         ConsultView.labelTextConsult.setText(serviceNameFromList);
+//        for (int j = 0; j < snl.size(); j++) {
+//        	ConsultView.labelTextConsult.setText(snl.get(j));
+//        }
         
     }
 
