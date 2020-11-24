@@ -11,6 +11,7 @@ import Views.ModuleServiceActionsView.ConsultView;
 import Views.ModuleServiceActionsView.EditView;
 import Views.ModuleServiceActionsView.InsertView;
 import Views.ModuleServiceActionsView.RemoveView;
+import application.mainMenu;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -99,11 +100,22 @@ public class ModuleServiceView extends JFrame {
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRemove.setBounds(228, 147, 168, 51);
 		contentPane.add(btnRemove);
+		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setBounds(168, 232, 85, 21);
+		contentPane.add(btnNewButtonMenu);
 		btnRemove.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("REMOVE ACIONADO.");
 				RemoveView.main(null);
+			}
+		});
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				mainMenu.main(null);
 			}
 		});
 	}

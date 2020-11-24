@@ -32,7 +32,7 @@ public class ScheduleServiceView extends JFrame {
 	public static JTextField textFieldDescription;
 	public static JTextField textFieldCustomerCpf;
 	public static JTextField textFieldEmployeeCpf;
-	public static JComboBox comboBox;
+	public static JComboBox comboBoxStatus;
 
 	/**
 	 * Launch the application.
@@ -106,11 +106,11 @@ public class ScheduleServiceView extends JFrame {
 		lblStatus.setBounds(0, 128, 80, 29);
 		contentPane.add(lblStatus);
 		
-//		JComboBox comboBox = new JComboBox();
-//		comboBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-//		comboBox.setModel(new DefaultComboBoxModel(new String[] {"SCHEDULED", "FINISHED", "CANCELED"}));
-//		comboBox.setBounds(79, 134, 105, 23);
-//		contentPane.add(comboBox);
+		comboBoxStatus = new JComboBox();
+		comboBoxStatus.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		comboBoxStatus.setModel(new DefaultComboBoxModel(new String[] {"SCHEDULED", "FINISHED", "CANCELED"}));
+		comboBoxStatus.setBounds(79, 134, 105, 23);
+		contentPane.add(comboBoxStatus);
 		
 		JLabel lblCustomerCpf = new JLabel("Customer CPF:\r\n");
 		lblCustomerCpf.setHorizontalAlignment(SwingConstants.CENTER);
@@ -138,17 +138,23 @@ public class ScheduleServiceView extends JFrame {
 		textFieldEmployeeCpf.setBounds(108, 208, 248, 27);
 		contentPane.add(textFieldEmployeeCpf);
 		
-		JButton btnNewButton = new JButton("Add service.");
+		JButton btnNewButton = new JButton("Add customer service.");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		btnNewButton.setBounds(145, 259, 150, 56);
+		btnNewButton.setBounds(104, 259, 223, 56);
 		contentPane.add(btnNewButton);
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Schedule adicionado");
-				//CustomerServiceManager.insert();
-				ServiceManager.insert();
+				try {
+					CustomerServiceManager.insert();
+					dispose();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 	}

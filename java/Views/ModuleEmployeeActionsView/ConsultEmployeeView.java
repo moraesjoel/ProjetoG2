@@ -20,6 +20,7 @@ import manager.ServiceManager;
 public class ConsultEmployeeView extends JFrame {
 
 	private JPanel contentPane;
+	public static JLabel labelTextConsult;
 
 	/**
 	 * Launch the application.
@@ -48,6 +49,10 @@ public class ConsultEmployeeView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		labelTextConsult = new JLabel();
+		labelTextConsult.setBounds(27, 58, 409, 141);
+		contentPane.add(labelTextConsult);
+		
 		JLabel lblNewLabel = new JLabel("CONSULT");
 		lblNewLabel.setBounds(5, 5, 424, 32);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -56,17 +61,26 @@ public class ConsultEmployeeView extends JFrame {
 		
 		JButton btnNewButton = new JButton("Consult employees");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(131, 132, 176, 42);
+		btnNewButton.setBounds(78, 201, 176, 52);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButtonMenu = new JButton("Back to menu");
+		btnNewButtonMenu.setBounds(277, 209, 105, 34);
+		contentPane.add(btnNewButtonMenu);
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("CONSULT ACIONADO.");
 				EmployeeManager.consult();
-				dispose();
+			}
+		});
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
 				mainMenu.main(null);
 			}
 		});
 	}
-
 }

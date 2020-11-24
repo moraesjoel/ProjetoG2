@@ -39,15 +39,10 @@ public class CustomerServiceManager {
     static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
     static SimpleDateFormat sdf2 = new SimpleDateFormat("HH:mm"); 
 
-    private static void clearBuffer(Scanner scanner) {
-        if (scanner.hasNextLine()) {
-            scanner.nextLine();
-        }
-    }
-
+   
     public static void insert() throws ParseException {
       
-    	Date date = new Date(01/03/2000);
+    	/*Date date = new Date(01/03/2000);
 
     	Employee employee = new Employee("11", "joel", "11", "joel@");
 
@@ -66,7 +61,7 @@ public class CustomerServiceManager {
     	CustomerManager.customerList.add(customer2);
     	CustomerManager.customerList.add(customer3);
 
-    	ServiceManager.serviceList.add(service1);
+    	ServiceManager.serviceList.add(service1);*/
     	
     	////////////
     	
@@ -93,7 +88,6 @@ public class CustomerServiceManager {
     }
     
     public static void consult() {
-
         for (int i = 0; i < customerServiceList.size(); i++) {
             System.out.println("\nDate: " + sdf.format(customerServiceList.get(i).getDateOfService()));
             System.out.println("Hour: " + sdf2.format(customerServiceList.get(i).getHourOfService()));
@@ -106,7 +100,7 @@ public class CustomerServiceManager {
     
     public static void remove() throws ParseException {
     	System.out.println("\nRemove a customer service \n ");
-		clearBuffer(reader);
+		
         System.out.println("Type the customer service date: ");
         String costumerServiceDateToRemove = reader.nextLine();
         customerServiceDateFormattedToRemove = sdf.parse(costumerServiceDateToRemove);
@@ -153,8 +147,6 @@ public class CustomerServiceManager {
     }
     
     protected static void readAndSetCustomerServiceDate(CustomerService customerService) throws ParseException{
-
-	    System.out.println("Type the service date: ");
 	    customerServiceDate = ScheduleServiceView.textFieldDate.getText();	
 	    customerServiceDateFormatted = sdf.parse(customerServiceDate);
 	    	   
@@ -168,7 +160,6 @@ public class CustomerServiceManager {
 	    boolean validationScheduled;
 	    
 	    do {
-	    	System.out.println("Type the service hour: ");
 	    	customerServiceHour = ScheduleServiceView.textFieldHour.getText();	
 		    customerServiceHourFormatted = sdf2.parse(customerServiceHour);
 		    
@@ -209,7 +200,6 @@ public class CustomerServiceManager {
     }
     	
     protected static void readAndSetCustomerServiceDescription(CustomerService customerService){
-	    System.out.println("Type the service description: ");
 	    serviceDescription = ScheduleServiceView.textFieldDescription.getText();
 	
 	    boolean verification = false;
@@ -230,11 +220,11 @@ public class CustomerServiceManager {
     
     protected static void readAndSetCustomerServiceStatus(CustomerService customerService) throws NullPointerException{
 		try {
-			System.out.println("Define the Customer Service status:  1 - SCHEDULED | 2 - FINISHED | 3 - CANCELED ");
-    		optionStatus = (String) ScheduleServiceView.comboBox.getSelectedItem();
+			optionStatus = (String) ScheduleServiceView.comboBoxStatus.getSelectedItem();
 		} catch (NullPointerException e) {
 			System.out.println("Exception!!!" + e);
 		}
+		System.out.println("Inseriu status");
     	//optionStatus = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
     	customerService.setServiceStatus(optionStatus);
 //        if (optionStatus.equals("SCHEDULED")) {
@@ -249,8 +239,6 @@ public class CustomerServiceManager {
 	}
     
     protected static void readAndSetCustomerServiceCustomerName(CustomerService customerService) throws ParseException{
-        clearBuffer(reader);
-	    System.out.println("Type the customer Cpf to the service: ");
 	    customerServiceCpf = ScheduleServiceView.textFieldCustomerCpf.getText();	
 	    boolean verification = false;
 	    int i;
@@ -274,7 +262,6 @@ public class CustomerServiceManager {
     }
     
     protected static void readAndSetCustomerServiceEmployee(CustomerService customerService) throws ParseException{
-    	System.out.println("Type the employee service Cpf: ");
 	    employeeServiceCpf = ScheduleServiceView.textFieldEmployeeCpf.getText();	
 	    boolean verification = false;
 	    int j;
@@ -291,7 +278,6 @@ public class CustomerServiceManager {
 	}
 
     public static void consultSchedule() throws ParseException {
-    	//clearBuffer(reader);
     	System.out.println("\nEnter the date to consult the schedule: ");
         String costumerScheduleDate = reader.nextLine();
         customerScheduledDateFormatted = sdf.parse(costumerScheduleDate);
@@ -327,7 +313,6 @@ public class CustomerServiceManager {
 				
 				action = reader.nextInt();
 				
-				clearBuffer(reader);
 				
 				switch (action) {
 					case 1:
@@ -371,7 +356,6 @@ public class CustomerServiceManager {
 
             action = reader.nextInt();
 
-            clearBuffer(reader);
 
             switch (action) {
                 case 1:

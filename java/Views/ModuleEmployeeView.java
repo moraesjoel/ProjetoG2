@@ -65,7 +65,6 @@ public class ModuleEmployeeView extends JFrame {
 				System.out.println("INSERT ACIONADO.");
 				dispose();
 				InsertEmployeeView.main(null);
-	
 			}
 		});
 		
