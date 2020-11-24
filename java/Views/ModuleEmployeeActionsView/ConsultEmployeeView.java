@@ -59,6 +59,10 @@ public class ConsultEmployeeView extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel);
 		
+		labelTextConsult = new JLabel();
+		labelTextConsult.setBounds(20, 61, 409, 141);
+		contentPane.add(labelTextConsult);
+		
 		JButton btnNewButton = new JButton("Consult employees");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton.setBounds(78, 201, 176, 52);

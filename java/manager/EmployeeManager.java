@@ -6,10 +6,12 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Views.ModuleEmployeeActionsView.ConsultEmployeeView;
 import Views.ModuleEmployeeActionsView.EditEmployeeView;
 import Views.ModuleEmployeeActionsView.EmployeeEditMenuView;
 import Views.ModuleEmployeeActionsView.InsertEmployeeView;
 import Views.ModuleEmployeeActionsView.RemoveEmployeeView;
+import Views.ModuleServiceActionsView.ConsultView;
 
 public class EmployeeManager {
 
@@ -40,7 +42,6 @@ public class EmployeeManager {
         
         employeeList.add(employee);
         
-        consult();
 
     }
     
@@ -57,12 +58,22 @@ public class EmployeeManager {
     }
 
     public static void consult() {
-        for (int i = 0; i < employeeList.size(); i++) {
-            System.out.println("\nName: " + employeeList.get(i).getName());
-            System.out.println("CPF: " + employeeList.get(i).getCpf());
-            System.out.println("Phone Number: " + employeeList.get(i).getPhoneNumber());
-            System.out.println("Email: " + employeeList.get(i).getEmail());
+        String employeeNameFromList = "";
+    	//List<String> snl = new ArrayList<>();
+        if(employeeList.isEmpty()) {
+        	employeeNameFromList = "Lista de funcionarios vazia!";
+        } else {
+        	for (int i = 0; i < employeeList.size(); i++) {
+                System.out.println("\nService: " + employeeList.get(i).getName());
+                employeeNameFromList += "\n" + employeeList.get(i).getName() + " " + employeeList.get(i).getCpf() + " ";
+                //snl.add(serviceList.get(i).getName());
+            }
         }
+        ConsultEmployeeView.labelTextConsult.setText(employeeNameFromList);
+//        for (int j = 0; j < snl.size(); j++) {
+//        	ConsultView.labelTextConsult.setText(snl.get(j));
+//        }
+        
     }
 
     public static void remove() {
@@ -91,6 +102,15 @@ public class EmployeeManager {
         employeeName = EmployeeEditMenuView.textFieldEmployeeName.getText();
         employee.setName(employeeName);
     }
+    public static void editOnlyName() throws ParseException {
+        String customerToEdit = EditEmployeeView.textFieldEmployeeCpfEdit.getText();
+
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getCpf().equals(customerToEdit) ) {
+            	readAndSetEmployeeNameEdit(employeeList.get(i));
+            }
+        }
+    }
 
     protected static void readAndSetEmployeeCPF(Employee employee){
         employeeCpf = InsertEmployeeView.textFieldEmployeeCpf.getText();
@@ -102,6 +122,16 @@ public class EmployeeManager {
         employee.setCpf(employeeCpf);
     }
 
+    public static void editOnlyCpf() throws ParseException {
+        String customerToEdit = EditEmployeeView.textFieldEmployeeCpfEdit.getText();
+
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getCpf().equals(customerToEdit) ) {
+            	readAndSetEmployeeCPFEdit(employeeList.get(i));
+            }
+        }
+    }
+    
     protected static void readAndSetEmployeePhoneNumber(Employee employee){
         employeePhoneNumber = InsertEmployeeView.textFieldEmployeePhone.getText();
         employee.setPhoneNumber(employeePhoneNumber);
@@ -110,6 +140,16 @@ public class EmployeeManager {
     protected static void readAndSetEmployeePhoneNumberEdit(Employee employee){
         employeePhoneNumber = EmployeeEditMenuView.textFieldEmployeePhone.getText();
         employee.setPhoneNumber(employeePhoneNumber);
+    }
+    
+    public static void editOnlyPhoneNumber() throws ParseException {
+        String customerToEdit = EditEmployeeView.textFieldEmployeeCpfEdit.getText();
+
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getCpf().equals(customerToEdit) ) {
+            	readAndSetEmployeePhoneNumberEdit(employeeList.get(i));
+            }
+        }
     }
 
     protected static void readAndSetEmail(Employee employee){
@@ -120,6 +160,16 @@ public class EmployeeManager {
     protected static void readAndSetEmailEdit(Employee employee){
         employeeEmail = EmployeeEditMenuView.textFieldEmployeeEmail.getText();
         employee.setEmail(employeeEmail);
+    }
+    
+    public static void editOnlyEmail() throws ParseException {
+        String customerToEdit = EditEmployeeView.textFieldEmployeeCpfEdit.getText();
+
+        for (int i = 0; i < employeeList.size(); i++) {
+            if (employeeList.get(i).getCpf().equals(customerToEdit) ) {
+            	readAndSetEmailEdit(employeeList.get(i));
+            }
+        }
     }
 
     private static void removeCustomer(String cpfToRemove) {
