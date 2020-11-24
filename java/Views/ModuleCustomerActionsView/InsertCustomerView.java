@@ -13,6 +13,7 @@ import java.text.ParseException;
 import javax.swing.SwingConstants;
 
 import Views.ModuleCustomerView;
+import application.mainMenu;
 import manager.CustomerManager;
 
 import javax.swing.JTextField;
@@ -210,6 +211,9 @@ public class InsertCustomerView {
 				System.out.println("Inserindo...");
 				try {
 					CustomerManager.insert();
+					frame.dispose();
+					mainMenu.main(null);
+					
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}

@@ -8,6 +8,7 @@ import javax.swing.SwingConstants;
 
 import Views.ModuleCustomerActionsView.ConsultCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
+import application.mainMenu;
 import manager.CustomerManager;
 
 import java.awt.Font;
@@ -107,5 +108,18 @@ public class ModuleCustomerView {
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRemove.setBounds(32, 223, 153, 27);
 		frame.getContentPane().add(btnRemove);
+		
+		JButton btnMenu = new JButton("MENU");
+		btnMenu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnMenu.setBounds(230, 223, 153, 27);
+		frame.getContentPane().add(btnMenu);
+		btnMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Back to menu");
+				frame.dispose();
+				mainMenu.main(null);
+			}
+		});
 	}
 }
