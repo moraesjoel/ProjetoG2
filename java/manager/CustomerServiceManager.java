@@ -94,7 +94,7 @@ public class CustomerServiceManager {
             System.out.println("Customer: " + customerServiceList.get(i).getCustomer().getName());
             System.out.println("Employee: " + customerServiceList.get(i).getEmployee().getName());
             //System.out.println("Status: " + customerServiceList.get(i).getStatus());
-            System.out.println("Description: " + customerServiceList.get(i).getDescription());
+            System.out.println("Description: " + customerServiceList.get(i).getDescription().getName());
         }
     }
     

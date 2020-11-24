@@ -9,7 +9,9 @@ import javax.swing.SwingConstants;
 import Views.ModuleCustomerActionsView.ConsultCustomerView;
 import Views.ModuleCustomerActionsView.EditCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
+
 import Views.ModuleCustomerActionsView.RemoveCustomerView;
+
 import application.mainMenu;
 import manager.CustomerManager;
 
@@ -118,6 +120,7 @@ public class ModuleCustomerView {
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRemove.setBounds(32, 223, 153, 27);
 		frame.getContentPane().add(btnRemove);
+
 		btnRemove.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -133,8 +136,14 @@ public class ModuleCustomerView {
 		btnMenu.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
+
 				mainMenu.main(null);
 				frame.dispose();
+
+				System.out.println("Back to menu");
+				frame.dispose();
+				mainMenu.main(null);
+
 			}
 		});
 	}

@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import Views.ModuleCustomerView;
+import application.mainMenu;
+
 import manager.CustomerManager;
 
 import java.awt.Font;
@@ -64,6 +66,19 @@ public class ConsultCustomerView {
 		JButton btnConsult = new JButton("Consult");
 		btnConsult.setBounds(148, 211, 115, 39);
 		frame.getContentPane().add(btnConsult);
+		
+		JButton btnNewButtonMenu = new JButton("Menu");
+		btnNewButtonMenu.setBounds(278, 228, 85, 21);
+		frame.getContentPane().add(btnNewButtonMenu);
+		
+		btnNewButtonMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				frame.dispose();
+				mainMenu.main(null);
+			}
+		});
+		
 		btnConsult.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
