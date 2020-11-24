@@ -17,6 +17,7 @@ import Views.ScheduleServiceView;
 import Views.ModuleCustomerActionsView.EditCustomerMenuView;
 import Views.ModuleCustomerActionsView.EditCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
+import Views.ModuleCustomerActionsView.RemoveCustomerView;
 
 public class CustomerManager {
 
@@ -91,9 +92,7 @@ public class CustomerManager {
     }
     
     public static void remove() {
-		//clearBuffer(reader);
-        System.out.println("Type the customer CPF to remove it: ");
-        String costumerToRemove = reader.nextLine();
+        String costumerToRemove = RemoveCustomerView.textFieldCpfToRemove.getText();
 
         removeCustomer(costumerToRemove);
         
@@ -278,15 +277,22 @@ public class CustomerManager {
 		String newAddressStreet = EditCustomerMenuView.textFieldAddressStreet.getText();
 		String newAddressNumber = EditCustomerMenuView.textFieldAddressNumber.getText();
 		String newAddressCity = EditCustomerMenuView.textFieldAddressCity.getText();
-		String newAddressState = EditCustomerMenuView.textFieldAddressState.getText();		
+		String newAddressState = EditCustomerMenuView.textFieldAddressState.getText();	
+		
+		try {
+			optionStatus = (String) EditCustomerMenuView.comboBox.getSelectedItem();
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+		}
 		
 		customer.setName(newName);
-		customer.setCpf(newName);
-		customer.setPhoneNumber(newName);
+		customer.setCpf(newCpf);
+		customer.setPhoneNumber(newPhoneNumber);
 		customer.setBirthday(customerBirthday);
 		customer.setGender(newGender);
 		customer.setEmail(newEmail);
 		customer.setMaritalStatus(newMaritalStatus);
+		customer.setStatus(optionStatus);
 		
 		Address newAddress = new Address(newAddressStreet, newAddressNumber, newAddressCity, newAddressState);
 		customer.setAddress(newAddress);
@@ -382,7 +388,7 @@ public class CustomerManager {
 		for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
             	try {
-        			optionStatus = (String) InsertCustomerView.comboBox.getSelectedItem();
+        			optionStatus = (String) EditCustomerMenuView.comboBox.getSelectedItem();
         			customerList.get(i).setStatus(optionStatus);
         		} catch (NullPointerException e) {
         			e.printStackTrace();

@@ -34,6 +34,7 @@ public class EditCustomerMenuView {
 	public static JTextField textFieldAddressNumber;
 	public static JTextField textFieldAddressCity;
 	public static JTextField textFieldAddressState;
+	public static JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -225,7 +226,7 @@ public class EditCustomerMenuView {
 		lblStatus.setBounds(30, 245, 46, 14);
 		frame.getContentPane().add(lblStatus);
 		
-		JComboBox comboBox = new JComboBox();
+		comboBox = new JComboBox();
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ACTIVE", "INACTIVE"}));
 		comboBox.setBounds(82, 245, 96, 22);
 		frame.getContentPane().add(comboBox);
@@ -307,7 +308,6 @@ public class EditCustomerMenuView {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					CustomerManager.edit();
-					frame.dispose();
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}

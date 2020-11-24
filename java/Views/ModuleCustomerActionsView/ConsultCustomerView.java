@@ -4,10 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import javax.swing.SwingConstants;
 
-import Views.ModuleServiceView;
+import Views.ModuleCustomerView;
 import manager.CustomerManager;
 
 import java.awt.Font;
@@ -62,13 +61,24 @@ public class ConsultCustomerView {
 		lblConsultField.setBounds(29, 50, 379, 166);
 		frame.getContentPane().add(lblConsultField);
 		
-		JButton btnConsult = new JButton("consult");
-		btnConsult.setBounds(174, 227, 89, 23);
+		JButton btnConsult = new JButton("Consult");
+		btnConsult.setBounds(148, 211, 115, 39);
 		frame.getContentPane().add(btnConsult);
 		btnConsult.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
 				CustomerManager.consult();
+			}
+		});
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(268, 227, 89, 23);
+		frame.getContentPane().add(btnBack);
+		btnBack.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				ModuleCustomerView.main(null);
+				frame.dispose();
 			}
 		});
 	}

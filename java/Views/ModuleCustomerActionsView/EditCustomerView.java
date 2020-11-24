@@ -77,11 +77,8 @@ public class EditCustomerView {
 		btnEdit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				try {
-					CustomerManager.edit();
-				} catch (ParseException e1) {
-					e1.printStackTrace();
-				}
+				EditCustomerMenuView.main(null);
+				frame.dispose();
 			}
 		});
 	}

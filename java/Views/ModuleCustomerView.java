@@ -7,7 +7,10 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import Views.ModuleCustomerActionsView.ConsultCustomerView;
+import Views.ModuleCustomerActionsView.EditCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
+import Views.ModuleCustomerActionsView.RemoveCustomerView;
+import application.mainMenu;
 import manager.CustomerManager;
 
 import java.awt.Font;
@@ -67,7 +70,7 @@ public class ModuleCustomerView {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("INSERT ACIONADO.");
 				InsertCustomerView.main(null);
-	
+				frame.dispose();
 			}
 		});
 		
@@ -85,6 +88,7 @@ public class ModuleCustomerView {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Acessando modulo Employee.");
 				ConsultCustomerView.main(null);
+				frame.dispose();
 			}
 		});
 		
@@ -97,6 +101,13 @@ public class ModuleCustomerView {
 		btnUpdate.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnUpdate.setBounds(32, 174, 153, 27);
 		frame.getContentPane().add(btnUpdate);
+		btnUpdate.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				EditCustomerView.main(null);
+				frame.dispose();
+			}
+		});
 		
 		JButton btnRelated = new JButton("RELATED");
 		btnRelated.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -107,5 +118,24 @@ public class ModuleCustomerView {
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRemove.setBounds(32, 223, 153, 27);
 		frame.getContentPane().add(btnRemove);
+		btnRemove.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				RemoveCustomerView.main(null);
+				frame.dispose();
+			}
+		});
+		
+		JButton btnMenu = new JButton("MENU");
+		btnMenu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		btnMenu.setBounds(230, 223, 153, 27);
+		frame.getContentPane().add(btnMenu);
+		btnMenu.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				mainMenu.main(null);
+				frame.dispose();
+			}
+		});
 	}
 }
