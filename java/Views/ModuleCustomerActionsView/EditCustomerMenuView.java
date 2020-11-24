@@ -87,6 +87,12 @@ public class EditCustomerMenuView {
 		btnEnterName.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterName.setBounds(445, 69, 140, 23);
 		frame.getContentPane().add(btnEnterName);
+		btnEnterName.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditName();
+			}
+		});
 		
 		JLabel lblCpf = new JLabel("CPF:");
 		lblCpf.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -102,6 +108,12 @@ public class EditCustomerMenuView {
 		btnEnterCpf.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterCpf.setBounds(445, 96, 140, 23);
 		frame.getContentPane().add(btnEnterCpf);
+		btnEnterCpf.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditCpf();
+			}
+		});
 		
 		JLabel lblPhoneNumber = new JLabel("Phone Number:");
 		lblPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -117,6 +129,12 @@ public class EditCustomerMenuView {
 		btnEnterPhoneNumber.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterPhoneNumber.setBounds(445, 123, 140, 23);
 		frame.getContentPane().add(btnEnterPhoneNumber);
+		btnEnterPhoneNumber.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditPhoneNumber();
+			}
+		});
 		
 		JLabel lblBirthday = new JLabel("Birthday:");
 		lblBirthday.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -132,6 +150,12 @@ public class EditCustomerMenuView {
 		btnEnterBirthday.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterBirthday.setBounds(445, 146, 140, 23);
 		frame.getContentPane().add(btnEnterBirthday);
+		btnEnterBirthday.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditPhoneBirthday();
+			}
+		});
 		
 		JLabel lblGender = new JLabel("Gender:");
 		lblGender.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -147,6 +171,12 @@ public class EditCustomerMenuView {
 		btnEnterGender.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterGender.setBounds(445, 168, 140, 23);
 		frame.getContentPane().add(btnEnterGender);
+		btnEnterGender.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditPhoneNumber();
+			}
+		});
 		
 		JLabel lblEmail = new JLabel("Email:");
 		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -162,6 +192,12 @@ public class EditCustomerMenuView {
 		btnEnterEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterEmail.setBounds(445, 193, 140, 23);
 		frame.getContentPane().add(btnEnterEmail);
+		btnEnterEmail.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditEmail();
+			}
+		});
 		
 		JLabel lblMaritalStatus = new JLabel("Marital Status:");
 		lblMaritalStatus.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -177,6 +213,12 @@ public class EditCustomerMenuView {
 		btnEnterMaritalStatus.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterMaritalStatus.setBounds(445, 218, 140, 23);
 		frame.getContentPane().add(btnEnterMaritalStatus);
+		btnEnterMaritalStatus.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditMaritalStatus();
+			}
+		});
 		
 		JLabel lblStatus = new JLabel("Status:");
 		lblStatus.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -192,6 +234,12 @@ public class EditCustomerMenuView {
 		btnEnterComboBox.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterComboBox.setBounds(445, 243, 140, 23);
 		frame.getContentPane().add(btnEnterComboBox);
+		btnEnterComboBox.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditStatus();
+			}
+		});
 		
 		JLabel lblAddress = new JLabel("Address:");
 		lblAddress.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -202,6 +250,12 @@ public class EditCustomerMenuView {
 		btnEnterAddress.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnEnterAddress.setBounds(445, 266, 140, 23);
 		frame.getContentPane().add(btnEnterAddress);
+		btnEnterAddress.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				CustomerManager.readAndSetEditAddress();
+			}
+		});
 		
 		JLabel lblStreet = new JLabel("Street:");
 		lblStreet.setFont(new Font("Tahoma", Font.PLAIN, 14));

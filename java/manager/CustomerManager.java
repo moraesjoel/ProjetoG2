@@ -316,11 +316,11 @@ public class CustomerManager {
 	
 	public static void readAndSetEditPhoneNumber() {
 		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
-		String customerNewPohneNumber = EditCustomerMenuView.textFieldCpf.getText();
+		String customerNewPhoneNumber = EditCustomerMenuView.textFieldPhoneNumber.getText();
 		
 		for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
-            	customerList.get(i).setPhoneNumber(customerNewPohneNumber);
+            	customerList.get(i).setPhoneNumber(customerNewPhoneNumber);
             }
         }
 	}
@@ -339,6 +339,70 @@ public class CustomerManager {
 		for (int i = 0; i < customerList.size(); i++) {
             if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
             	customerList.get(i).setBirthday(customerBirthday);
+            }
+        }
+	}
+	
+	public static void readAndSetEditGender() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewGender = EditCustomerMenuView.textFieldGender.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setGender(customerNewGender);
+            }
+        }
+	}
+	
+	public static void readAndSetEditEmail() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewEmail = EditCustomerMenuView.textFieldEmail.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setEmail(customerNewEmail);
+            }
+        }
+	}
+	
+	public static void readAndSetEditMaritalStatus() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewMaritalStatus = EditCustomerMenuView.textFieldMaritalStatus.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setMaritalStatus(customerNewMaritalStatus);
+            }
+        }
+	}
+	
+	public static void readAndSetEditStatus() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	try {
+        			optionStatus = (String) InsertCustomerView.comboBox.getSelectedItem();
+        			customerList.get(i).setStatus(optionStatus);
+        		} catch (NullPointerException e) {
+        			e.printStackTrace();
+        		}
+            }
+        }
+	}
+	
+	public static void readAndSetEditAddress() {
+		String customerToEditCpf = EditCustomerView.textFieldCpfToEdit.getText();
+		String customerNewStreet = EditCustomerMenuView.textFieldAddressStreet.getText();
+		String customerNewNumber = EditCustomerMenuView.textFieldAddressNumber.getText();
+		String customerNewCity = EditCustomerMenuView.textFieldAddressCity.getText();
+		String customerNewState = EditCustomerMenuView.textFieldAddressState.getText();
+		
+		Address newAddress = new Address(customerNewStreet, customerNewNumber, customerNewCity, customerNewState);
+		
+		for (int i = 0; i < customerList.size(); i++) {
+            if (customerList.get(i).getCpf().equals(customerToEditCpf) ) {
+            	customerList.get(i).setAddress(newAddress);
             }
         }
 	}
