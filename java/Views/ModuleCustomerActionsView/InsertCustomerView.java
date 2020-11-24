@@ -212,12 +212,12 @@ public class InsertCustomerView {
 				try {
 					CustomerManager.insert();
 					frame.dispose();
-					mainMenu.main(null);
+					ModuleCustomerView.main(null);
 					
 				} catch (ParseException e1) {
 					e1.printStackTrace();
 				}
-				ModuleCustomerView.main(null);
+				
 			}
 		});
 		
@@ -230,6 +230,7 @@ public class InsertCustomerView {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Acessando modulo Employee.");
 				ModuleCustomerView.main(null);
+				frame.dispose();
 			}
 		});
 	}

@@ -136,14 +136,8 @@ public class ModuleCustomerView {
 		btnMenu.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-
 				mainMenu.main(null);
 				frame.dispose();
-
-				System.out.println("Back to menu");
-				frame.dispose();
-				mainMenu.main(null);
-
 			}
 		});
 	}

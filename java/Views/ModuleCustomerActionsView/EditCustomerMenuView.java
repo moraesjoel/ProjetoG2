@@ -12,6 +12,7 @@ import java.text.ParseException;
 
 import javax.swing.SwingConstants;
 
+import Views.ModuleCustomerView;
 import application.mainMenu;
 import manager.CustomerManager;
 
@@ -321,7 +322,7 @@ public class EditCustomerMenuView {
 		btnCancel.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				mainMenu.main(null);
+				ModuleCustomerView.main(null);
 				frame.dispose();
 			}
 		});

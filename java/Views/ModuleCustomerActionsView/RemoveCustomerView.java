@@ -4,13 +4,13 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 
+import Views.ModuleCustomerView;
 import application.mainMenu;
 import manager.CustomerManager;
 
@@ -77,7 +77,7 @@ public class RemoveCustomerView {
 			
 			public void actionPerformed(ActionEvent e) {
 				CustomerManager.remove();
-				mainMenu.main(null);
+				ModuleCustomerView.main(null);
 				frame.dispose();
 			}
 		});
