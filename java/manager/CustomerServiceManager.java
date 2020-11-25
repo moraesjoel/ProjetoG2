@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Views.ScheduleServiceView;
+import Views.ModuleCustomerActionsView.InsertCustomerView;
+import Views.ModuleEmployeeActionsView.InsertEmployeeView;
+import Views.ModuleServiceActionsView.InsertView;
 
 import java.util.Date;
 
@@ -73,7 +76,7 @@ public class CustomerServiceManager {
         
         readAndSetCustomerServiceDescription(customerService);
         
-    	//readAndSetCustomerServiceStatus(customerService);
+    	readAndSetCustomerServiceStatus(customerService);
 
     	readAndSetCustomerServiceCustomerName(customerService);
 
@@ -211,8 +214,7 @@ public class CustomerServiceManager {
             } 
         }
 	    if (verification == false) {
-	    	ServiceManager.insert();
-	    	customerService.setDescription(ServiceManager.serviceList.get(j++));
+	    	InsertView.main(null);
 	    }
 	    
 	}
@@ -222,20 +224,9 @@ public class CustomerServiceManager {
 		try {
 			optionStatus = (String) ScheduleServiceView.comboBoxStatus.getSelectedItem();
 		} catch (NullPointerException e) {
-			System.out.println("Exception!!!" + e);
+			e.printStackTrace();;
 		}
-		System.out.println("Inseriu status");
-    	//optionStatus = ((ComboBoxItem)comboBox.SelectedItem).Content.ToString();
     	customerService.setServiceStatus(optionStatus);
-//        if (optionStatus.equals("SCHEDULED")) {
-//        	customerService.setServiceStatus(optionStatus);
-//        } else if (optionStatus.equals("FINISHED")){
-//        	customerService.setStatus(CustomerServiceStatus.FINISHED);
-//        } else if (optionStatus.equals("CANCELED")){
-//        	customerService.setStatus(CustomerServiceStatus.CANCELED);
-//        }
-	        	
-	    
 	}
     
     protected static void readAndSetCustomerServiceCustomerName(CustomerService customerService) throws ParseException{
@@ -250,8 +241,7 @@ public class CustomerServiceManager {
         }
 	    
 	    if (verification == false) {
-	    	CustomerManager.insert();
-	    	customerService.setCustomer(CustomerManager.customerList.get(i++));
+	         InsertCustomerView.main(null);
 	    }
 	    
     }
@@ -272,8 +262,7 @@ public class CustomerServiceManager {
             } 
         }
 	    if (verification == false) {
-	    	EmployeeManager.insert();
-	    	customerService.setEmployee(EmployeeManager.employeeList.get(j++));
+	    	InsertEmployeeView.main(null);
 	    }
 	}
 

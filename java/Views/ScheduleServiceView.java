@@ -7,6 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import Views.ModuleCustomerActionsView.InsertCustomerView;
+import Views.ModuleEmployeeActionsView.InsertEmployeeView;
+import Views.ModuleServiceActionsView.InsertView;
 import manager.CustomerServiceManager;
 import manager.ServiceManager;
 
@@ -55,7 +58,7 @@ public class ScheduleServiceView extends JFrame {
 	 */
 	public ScheduleServiceView() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 370);
+		setBounds(100, 100, 405, 370);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -142,7 +145,6 @@ public class ScheduleServiceView extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnNewButton.setBounds(104, 259, 223, 56);
 		contentPane.add(btnNewButton);
-		
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -156,6 +158,7 @@ public class ScheduleServiceView extends JFrame {
 				}
 				
 			}
-		});
+		});		
+		
 	}
 }
