@@ -7,9 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Views.ModuleCustomerActionsView.InsertCustomerView;
-import Views.ModuleEmployeeActionsView.InsertEmployeeView;
-import Views.ModuleServiceActionsView.InsertView;
 import manager.CustomerServiceManager;
 import manager.ServiceManager;
 
@@ -58,7 +55,7 @@ public class ScheduleServiceView extends JFrame {
 	 */
 	public ScheduleServiceView() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 405, 370);
+		setBounds(100, 100, 450, 370);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -145,6 +142,55 @@ public class ScheduleServiceView extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnNewButton.setBounds(104, 259, 223, 56);
 		contentPane.add(btnNewButton);
+		
+		JButton btnNewButtonVerifyCustomer = new JButton("Verify");
+		btnNewButtonVerifyCustomer.setBounds(366, 173, 59, 21);
+		contentPane.add(btnNewButtonVerifyCustomer);
+		
+		JButton btnNewButtonVerifyDescription = new JButton("Verify");
+		btnNewButtonVerifyDescription.setBounds(377, 95, 59, 21);
+		contentPane.add(btnNewButtonVerifyDescription);
+		
+		btnNewButtonVerifyDescription.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Schedule adicionado");
+				CustomerServiceManager.readAndSetCustomerServiceDescriptionVerify();
+	
+			}
+		});
+		
+		JButton btnNewButtonVerifyEmployee = new JButton("Verify");
+		btnNewButtonVerifyEmployee.setBounds(366, 212, 59, 21);
+		contentPane.add(btnNewButtonVerifyEmployee);
+		
+		btnNewButtonVerifyEmployee.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				try {
+					CustomerServiceManager.readAndSetCustomerServiceEmployeeVerify();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+	
+			}
+		});
+		
+		btnNewButtonVerifyCustomer.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Schedule adicionado");
+				try {
+					CustomerServiceManager.readAndSetCustomerServiceCustomerNameVerify();
+				} catch (ParseException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -158,7 +204,6 @@ public class ScheduleServiceView extends JFrame {
 				}
 				
 			}
-		});		
-		
+		});
 	}
 }

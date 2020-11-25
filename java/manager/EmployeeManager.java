@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Views.InsertNewModules.InsertNewEmployee;
 import Views.ModuleEmployeeActionsView.ConsultEmployeeView;
 import Views.ModuleEmployeeActionsView.EditEmployeeView;
 import Views.ModuleEmployeeActionsView.EmployeeEditMenuView;
@@ -39,6 +40,21 @@ public class EmployeeManager {
         readAndSetEmployeePhoneNumber(employee);
 
         readAndSetEmail(employee);
+        
+        employeeList.add(employee);
+        
+
+    }
+    public static void insertNew() throws ParseException {
+        Employee employee = new Employee();
+
+        readAndSetNewEmployeeName(employee);
+
+        readAndSetNewEmployeeCPF(employee);
+
+        readAndSetNewEmployeePhoneNumber(employee);
+
+        readAndSetNewEmail(employee);
         
         employeeList.add(employee);
         
@@ -98,10 +114,16 @@ public class EmployeeManager {
         employee.setName(employeeName);
     }
     
+    protected static void readAndSetNewEmployeeName(Employee employee) {
+        employeeName = InsertNewEmployee.textFieldEmployeeName.getText();
+        employee.setName(employeeName);
+    }
+    
     protected static void readAndSetEmployeeNameEdit(Employee employee) {
         employeeName = EmployeeEditMenuView.textFieldEmployeeName.getText();
         employee.setName(employeeName);
     }
+    
     public static void editOnlyName() throws ParseException {
         String customerToEdit = EditEmployeeView.textFieldEmployeeCpfEdit.getText();
 
@@ -114,6 +136,11 @@ public class EmployeeManager {
 
     protected static void readAndSetEmployeeCPF(Employee employee){
         employeeCpf = InsertEmployeeView.textFieldEmployeeCpf.getText();
+        employee.setCpf(employeeCpf);
+    }
+    
+    protected static void readAndSetNewEmployeeCPF(Employee employee){
+        employeeCpf = InsertNewEmployee.textFieldEmployeeCpf.getText();
         employee.setCpf(employeeCpf);
     }
     
@@ -137,6 +164,10 @@ public class EmployeeManager {
         employee.setPhoneNumber(employeePhoneNumber);
     }
     
+    protected static void readAndSetNewEmployeePhoneNumber(Employee employee){
+        employeePhoneNumber = InsertNewEmployee.textFieldEmployeePhone.getText();
+        employee.setPhoneNumber(employeePhoneNumber);
+    }
     protected static void readAndSetEmployeePhoneNumberEdit(Employee employee){
         employeePhoneNumber = EmployeeEditMenuView.textFieldEmployeePhone.getText();
         employee.setPhoneNumber(employeePhoneNumber);
@@ -154,6 +185,11 @@ public class EmployeeManager {
 
     protected static void readAndSetEmail(Employee employee){
         employeeEmail = InsertEmployeeView.textFieldEmployeeEmail.getText();
+        employee.setEmail(employeeEmail);
+    }
+    
+    protected static void readAndSetNewEmail(Employee employee){
+        employeeEmail = InsertNewEmployee.textFieldEmployeeEmail.getText();
         employee.setEmail(employeeEmail);
     }
     

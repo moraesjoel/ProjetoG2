@@ -5,7 +5,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Views.ModuleServiceView;
 import Views.ScheduleServiceView;
+import Views.InsertNewModules.InsertNewCustomer;
+import Views.InsertNewModules.InsertNewEmployee;
+import Views.InsertNewModules.InsertNewService;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
 import Views.ModuleEmployeeActionsView.InsertEmployeeView;
 import Views.ModuleServiceActionsView.InsertView;
@@ -76,7 +80,7 @@ public class CustomerServiceManager {
         
         readAndSetCustomerServiceDescription(customerService);
         
-    	readAndSetCustomerServiceStatus(customerService);
+    	//readAndSetCustomerServiceStatus(customerService);
 
     	readAndSetCustomerServiceCustomerName(customerService);
 
@@ -213,8 +217,21 @@ public class CustomerServiceManager {
             	verification = true;
             } 
         }
+	    
+	}
+    
+    public static void readAndSetCustomerServiceDescriptionVerify(){
+	    serviceDescription = ScheduleServiceView.textFieldDescription.getText();
+	
+	    boolean verification = false;
+	    int j;
+	    for (j = 0; j < ServiceManager.serviceList.size(); j++) {
+            if (ServiceManager.serviceList.get(j).getName().equals(serviceDescription)) {
+            	verification = true;
+            } 
+        }
 	    if (verification == false) {
-	    	InsertView.main(null);
+	    	InsertNewService.main(null);
 	    }
 	    
 	}
@@ -224,9 +241,11 @@ public class CustomerServiceManager {
 		try {
 			optionStatus = (String) ScheduleServiceView.comboBoxStatus.getSelectedItem();
 		} catch (NullPointerException e) {
-			e.printStackTrace();;
+			System.out.println("Exception!!!" + e);
 		}
-    	customerService.setServiceStatus(optionStatus);
+		System.out.println("Inseriu status");
+	        	
+	    
 	}
     
     protected static void readAndSetCustomerServiceCustomerName(CustomerService customerService) throws ParseException{
@@ -240,8 +259,20 @@ public class CustomerServiceManager {
             }
         }
 	    
+    }
+    
+    public static void readAndSetCustomerServiceCustomerNameVerify() throws ParseException{
+	    customerServiceCpf = ScheduleServiceView.textFieldCustomerCpf.getText();	
+	    boolean verification = false;
+	    int i;
+	    for (i = 0; i < CustomerManager.customerList.size(); i++) {
+            if (CustomerManager.customerList.get(i).getCpf().equals(customerServiceCpf)) {
+            	verification = true;
+            }
+        }
+	    
 	    if (verification == false) {
-	         InsertCustomerView.main(null);
+	    	InsertNewCustomer.main(null);
 	    }
 	    
     }
@@ -261,8 +292,20 @@ public class CustomerServiceManager {
             	verification = true;
             } 
         }
+	  
+	}
+    
+    public static void readAndSetCustomerServiceEmployeeVerify() throws ParseException{
+	    employeeServiceCpf = ScheduleServiceView.textFieldEmployeeCpf.getText();	
+	    boolean verification = false;
+	    int j;
+	    for (j = 0; j < EmployeeManager.employeeList.size(); j++) {
+            if (EmployeeManager.employeeList.get(j).getCpf().equals(employeeServiceCpf)) {
+            	verification = true;
+            } 
+        }
 	    if (verification == false) {
-	    	InsertEmployeeView.main(null);
+	    	InsertNewEmployee.main(null);
 	    }
 	}
 

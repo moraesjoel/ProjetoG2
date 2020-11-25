@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 
 import Views.ModuleCustomerView;
 import Views.ScheduleServiceView;
+import Views.InsertNewModules.InsertNewCustomer;
 import Views.ModuleCustomerActionsView.EditCustomerMenuView;
 import Views.ModuleCustomerActionsView.EditCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
@@ -64,10 +65,33 @@ public class CustomerManager {
     	
     	customerList.add(customer);
     	
-    	
-       // clearBuffer(reader);
     }
     
+    public static void insertNew() throws ParseException {
+    	Customer customer = new Customer();
+    	
+    	readAndSetNewCustomerName(customer);
+    	
+    	readAndSetNewCustomerCPF(customer);
+    	
+    	readAndSetNewCustomerPhoneNumber(customer);
+    	
+    	readAndSetNewCustomerBirthday(customer);
+    	
+    	readAndSetNewCustomerGender(customer);
+    	
+    	readAndSetNewEmail(customer);
+    	
+    	readAndSetNewMaritalStatus(customer);
+    	
+    	readAndSetNewStatus(customer);
+    	
+    	readAndSetNewAddress(customer);
+    	
+    	customerList.add(customer);
+    	
+   
+    }
     public static void consult() {
     	
         for (int i = 0; i < customerList.size(); i++) {
@@ -129,13 +153,27 @@ public class CustomerManager {
         customer.setName(customerName);
     }
     
+    protected static void readAndSetNewCustomerName(Customer customer) {
+    	customerName = InsertNewCustomer.textFieldName.getText();
+        customer.setName(customerName);
+    }
+    
 	protected static void readAndSetCustomerCPF(Customer customer){
         customerCPF = InsertCustomerView.textFieldCpf.getText();
         customer.setCpf(customerCPF);
 	}
 	
+	protected static void readAndSetNewCustomerCPF(Customer customer){
+        customerCPF = InsertNewCustomer.textFieldCpf.getText();
+        customer.setCpf(customerCPF);
+	}
+	
 	protected static void readAndSetCustomerPhoneNumber(Customer customer){
 	    customerPhoneNumber = InsertCustomerView.textFieldPhoneNumber.getText();
+        customer.setPhoneNumber(customerPhoneNumber);
+	}
+	protected static void readAndSetNewCustomerPhoneNumber(Customer customer){
+	    customerPhoneNumber = InsertNewCustomer.textFieldPhoneNumber.getText();
         customer.setPhoneNumber(customerPhoneNumber);
 	}
 	
@@ -144,9 +182,18 @@ public class CustomerManager {
         customerBirthday = sdf.parse(customerBirthdayString);
         customer.setBirthday(customerBirthday);
 	}
+	protected static void readAndSetNewCustomerBirthday(Customer customer) throws ParseException{
+	    customerBirthdayString = InsertNewCustomer.textFieldBirthday.getText();
+        customerBirthday = sdf.parse(customerBirthdayString);
+        customer.setBirthday(customerBirthday);
+	}
 	
 	protected static void readAndSetCustomerGender(Customer customer){
         customerGender = InsertCustomerView.textFieldGender.getText();
+        customer.setGender(customerGender);
+	}
+	protected static void readAndSetNewCustomerGender(Customer customer){
+        customerGender = InsertNewCustomer.textFieldGender.getText();
         customer.setGender(customerGender);
 	}
 	
@@ -154,11 +201,21 @@ public class CustomerManager {
 	    customerEmail = InsertCustomerView.textFieldEmail.getText();
         customer.setEmail(customerEmail);
 	}
+	protected static void readAndSetNewEmail(Customer customer){
+	    customerEmail = InsertNewCustomer.textFieldEmail.getText();
+        customer.setEmail(customerEmail);
+	}
 	
 	protected static void readAndSetMaritalStatus(Customer customer){
 	    customerMaritalStatus = InsertCustomerView.textFieldMaritalStatus.getText();
         customer.setMaritalStatus(customerMaritalStatus);
 	}
+	
+	protected static void readAndSetNewMaritalStatus(Customer customer){
+	    customerMaritalStatus = InsertNewCustomer.textFieldMaritalStatus.getText();
+        customer.setMaritalStatus(customerMaritalStatus);
+	}
+
 	
 	protected static void readAndSetStatus(Customer customer){
 		try {
@@ -169,6 +226,14 @@ public class CustomerManager {
 		}
 	}
 	
+	protected static void readAndSetNewStatus(Customer customer){
+		try {
+			optionStatus = (String) InsertNewCustomer.comboBox.getSelectedItem();
+			customer.setStatus(optionStatus);
+		} catch (NullPointerException e) {
+			System.out.println("Exception!!!" + e);
+		}
+	}
 	protected static void readAndSetAddress(Customer customer){
 		//clearBuffer(reader);
 		System.out.println("Type the customer address: ");
@@ -190,6 +255,30 @@ public class CustomerManager {
         customer.setAddress(customerAddress);
 
 	}
+	
+	protected static void readAndSetNewAddress(Customer customer){
+		//clearBuffer(reader);
+		System.out.println("Type the customer address: ");
+	    
+	    System.out.println("Street: ");
+	    addressStreet = InsertNewCustomer.textFieldAddressStreet.getText();
+	    
+	    System.out.println("Number: ");
+	    addressNumber = InsertNewCustomer.textFieldAddressNumber.getText();
+//		clearBuffer(reader);
+
+	    System.out.println("City: ");
+	    addressCity = InsertNewCustomer.textFieldAddressCity.getText();
+	    
+	    System.out.println("State: ");
+	    addressState = InsertNewCustomer.textFieldAddressState.getText();
+	    
+	    Address customerAddress = new Address(addressStreet, addressNumber, addressCity, addressState);
+        customer.setAddress(customerAddress);
+
+	}
+	
+	
 	
 	public static void readCpfToconsultServicesRelatedToCustomer() {
 		System.out.println("Insert the customer CPF to consult his/her services: ");

@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import Views.ScheduleServiceView;
+import Views.InsertNewModules.InsertNewService;
 import Views.ModuleServiceActionsView.ConsultView;
 import Views.ModuleServiceActionsView.EditView;
 import Views.ModuleServiceActionsView.InsertView;
@@ -29,6 +30,14 @@ public class ServiceManager {
         //consult();
     }
 
+    public static void insertNew() {
+        Service service = new Service();
+
+        readAndSetNewServiceName(service);
+        
+        serviceList.add(service);
+
+    }
     public static void consult() {
         String serviceNameFromList = "";
     	//List<String> snl = new ArrayList<>();
@@ -74,6 +83,14 @@ public class ServiceManager {
     	System.out.println("Type the service name: ");
         //serviceName = reader.nextLine();
     	serviceName = InsertView.textFieldServiceName.getText();
+    	System.out.println("Service Inserted.");
+        service.setName(serviceName);
+    }
+    
+    private static void readAndSetNewServiceName(Service service) {
+    	System.out.println("Type the service name: ");
+        //serviceName = reader.nextLine();
+    	serviceName = InsertNewService.textFieldServiceName.getText();
     	System.out.println("Service Inserted.");
         service.setName(serviceName);
     }
