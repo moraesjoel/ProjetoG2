@@ -65,10 +65,8 @@ public class ModuleServiceView extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("INSERT ACIONADO.");
-				dispose();
 				InsertView.main(null);
-	
+				dispose();
 			}
 		});
 		
@@ -79,8 +77,8 @@ public class ModuleServiceView extends JFrame {
 		btnConsult.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("CONSULT ACIONADO.");
 				ConsultView.main(null);
+				dispose();
 			}
 		});
 		
@@ -91,8 +89,8 @@ public class ModuleServiceView extends JFrame {
 		btnEdit.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("EDIT ACIONADO.");
 				EditView.main(null);
+				dispose();
 			}
 		});
 		
@@ -100,25 +98,23 @@ public class ModuleServiceView extends JFrame {
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRemove.setBounds(228, 147, 168, 51);
 		contentPane.add(btnRemove);
+		btnRemove.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				RemoveView.main(null);
+				dispose();
+			}
+		});
 		
 		JButton btnNewButtonMenu = new JButton("Menu");
 		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		btnNewButtonMenu.setBounds(168, 232, 85, 21);
 		contentPane.add(btnNewButtonMenu);
-		
-		btnRemove.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("REMOVE ACIONADO.");
-				RemoveView.main(null);
-			}
-		});
-		
 		btnNewButtonMenu.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				dispose();
 				mainMenu.main(null);
+				dispose();
 			}
 		});
 	}

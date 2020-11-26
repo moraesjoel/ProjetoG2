@@ -5,6 +5,10 @@ import entities.Employee;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import Views.InsertNewModules.InsertNewEmployee;
 import Views.ModuleEmployeeActionsView.ConsultEmployeeView;
@@ -90,6 +94,33 @@ public class EmployeeManager {
 //        	ConsultView.labelTextConsult.setText(snl.get(j));
 //        }
         
+    }
+    
+    public static JTable consultIntoTable() {        
+        Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Name");
+        columnNames.addElement("CPF");
+        columnNames.addElement("Phone Number");
+        columnNames.addElement("Email");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+    	for (int i = 0; i < employeeList.size(); i++) {
+            model.addRow(new Object[]{
+        			employeeList.get(i).getName(),
+        			employeeList.get(i).getCpf(),
+        			employeeList.get(i).getPhoneNumber(),
+        			employeeList.get(i).getEmail()
+        			});   
+        }
+    	return table;
     }
 
     public static void remove() {

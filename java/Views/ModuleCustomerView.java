@@ -6,14 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import Views.ModuleCustomerActionsView.ActivesCustomerView;
 import Views.ModuleCustomerActionsView.ConsultCustomerView;
 import Views.ModuleCustomerActionsView.EditCustomerView;
+import Views.ModuleCustomerActionsView.InactivesCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
-
+import Views.ModuleCustomerActionsView.RelatedCpfView;
 import Views.ModuleCustomerActionsView.RemoveCustomerView;
 
 import application.mainMenu;
-import manager.CustomerManager;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -70,7 +71,6 @@ public class ModuleCustomerView {
 		btnAdd.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("INSERT ACIONADO.");
 				InsertCustomerView.main(null);
 				frame.dispose();
 			}
@@ -80,6 +80,13 @@ public class ModuleCustomerView {
 		btnActives.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnActives.setBounds(230, 66, 153, 27);
 		frame.getContentPane().add(btnActives);
+		btnActives.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				ActivesCustomerView.main(null);
+				frame.dispose();
+			}
+		});
 		
 		JButton btnConsult = new JButton("CONSULT");
 		btnConsult.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -98,6 +105,13 @@ public class ModuleCustomerView {
 		btnInactives.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnInactives.setBounds(230, 121, 153, 27);
 		frame.getContentPane().add(btnInactives);
+		btnInactives.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				InactivesCustomerView.main(null);
+				frame.dispose();
+			}
+		});
 		
 		JButton btnUpdate = new JButton("UPDATE");
 		btnUpdate.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -115,6 +129,13 @@ public class ModuleCustomerView {
 		btnRelated.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnRelated.setBounds(230, 174, 153, 27);
 		frame.getContentPane().add(btnRelated);
+		btnRelated.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				RelatedCpfView.main(null);
+				frame.dispose();
+			}
+		});
 		
 		JButton btnRemove = new JButton("REMOVE");
 		btnRemove.setFont(new Font("Tahoma", Font.PLAIN, 16));

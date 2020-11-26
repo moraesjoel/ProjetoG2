@@ -6,6 +6,10 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Vector;
+
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import Views.ScheduleServiceView;
 import Views.InsertNewModules.InsertNewService;
@@ -38,23 +42,48 @@ public class ServiceManager {
         serviceList.add(service);
 
     }
-    public static void consult() {
-        String serviceNameFromList = "";
-    	//List<String> snl = new ArrayList<>();
-        if(serviceList.isEmpty()) {
-        	serviceNameFromList = "Lista de seriços vazia!";
-        } else {
-        	for (int i = 0; i < serviceList.size(); i++) {
-                System.out.println("\nService: " + serviceList.get(i).getName());
-                serviceNameFromList += "\n" + serviceList.get(i).getName() + " ";
-                //snl.add(serviceList.get(i).getName());
-            }
-        }
-        ConsultView.labelTextConsult.setText(serviceNameFromList);
-//        for (int j = 0; j < snl.size(); j++) {
-//        	ConsultView.labelTextConsult.setText(snl.get(j));
+    //public static void consult() {
+//        String serviceNameFromList = "";
+//        
+//        if(serviceList.isEmpty()) {
+//        	serviceNameFromList = "Lista de seriços vazia!";
+//        } else {
+//        	for (int i = 0; i < serviceList.size(); i++) {
+//                System.out.println("\nService: " + serviceList.get(i).getName());
+//                serviceNameFromList += "\n" + serviceList.get(i).getName() + " ";
+//                
+//            }
 //        }
+//        //ConsultView.labelTextConsult.setText(serviceNameFromList);
+//     
+//        Vector<String> row = new Vector<String>();
+//        
+//        Vector<String> columnNames = new Vector<String>();
+//        columnNames.addElement("Service Name");
+//        
+//        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+//        rowData.addElement(row);
         
+        
+ // }
+    
+    
+    public static JTable consultAndInputInTable() {
+    	Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Service Name");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < serviceList.size(); i++) {
+        	model.addRow(new Object[]{"Service: " + serviceList.get(i).getName()});
+        }
+    	return table;
     }
 
     public static void remove() {
@@ -119,43 +148,5 @@ public class ServiceManager {
             }
         }
     }
-    
-    public static void menuManager() throws ParseException {
-        int option = 1;
-        int action = 1;
-
-        while (option == 1) {
-            System.out.println("Choose the option: 1 - Add Service | 2 - Consult Service | 3 - Remove Service | 4 - Edit Service");
-
-            action = reader.nextInt();
-
-            clearBuffer(reader);
-
-            switch (action) {
-                case 1:
-                    insert();
-                    break;
-
-                case 2:
-                    consult();
-                    break;
-
-                case 3:
-                    remove();
-                    break;
-
-                case 4:
-                    edit();
-                    break;
-
-            }
-
-            System.out.println("Do you want to leave from the Service mode? 1 - NO  2 - YES ");
-            option = reader.nextInt();
-
-    }
-    
-    }
-    
     
 }

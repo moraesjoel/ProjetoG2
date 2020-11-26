@@ -9,8 +9,11 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.Vector;
 
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import Views.ModuleCustomerView;
 import Views.ScheduleServiceView;
@@ -18,6 +21,8 @@ import Views.InsertNewModules.InsertNewCustomer;
 import Views.ModuleCustomerActionsView.EditCustomerMenuView;
 import Views.ModuleCustomerActionsView.EditCustomerView;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
+import Views.ModuleCustomerActionsView.RelatedCpfView;
+import Views.ModuleCustomerActionsView.RelatedServicesCustomerView;
 import Views.ModuleCustomerActionsView.RemoveCustomerView;
 
 public class CustomerManager {
@@ -113,6 +118,49 @@ public class CustomerManager {
         }
         
         
+    }
+    
+    
+    public static JTable consultAndInputInTable() {
+    	Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Name");
+        columnNames.addElement("CPF");
+        columnNames.addElement("Phone Number");
+        columnNames.addElement("Email");
+        columnNames.addElement("Birthday");
+        columnNames.addElement("Gender");
+        columnNames.addElement("Marital Status");
+        columnNames.addElement("Status");
+        columnNames.addElement("City");
+        columnNames.addElement("State");
+        columnNames.addElement("Street");
+        columnNames.addElement("Number");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < customerList.size(); i++) {
+        	model.addRow(new Object[]{
+        			customerList.get(i).getName(),
+        			customerList.get(i).getCpf(),
+        			customerList.get(i).getPhoneNumber(),
+        			customerList.get(i).getEmail(),
+        			sdf.format(customerList.get(i).getBirthday()),
+        			customerList.get(i).getGender(),
+        			customerList.get(i).getMaritalStatus(),
+        			customerList.get(i).getStatus(),
+        			"City: " + customerList.get(i).getAddress().getCity(),
+        			"State: " + customerList.get(i).getAddress().getState(),
+        			"Street: " + customerList.get(i).getAddress().getStreet(),
+        			"Number: " + customerList.get(i).getAddress().getNumber()
+        			});
+        }
+    	return table;
     }
     
     public static void remove() {
@@ -280,27 +328,54 @@ public class CustomerManager {
 	
 	
 	
-	public static void readCpfToconsultServicesRelatedToCustomer() {
-		System.out.println("Insert the customer CPF to consult his/her services: ");
-		customerServiceCpf = reader.nextLine();
-		consultServicesRelatedToCustomer(customerServiceCpf);
-	}
+//	public static void readCpfToconsultServicesRelatedToCustomer() {
+//		customerServiceCpf = RelatedGetCpfCustomerView.textFieldCustomerCpf.getText();
+//		consultServicesRelatedToCustomer(customerServiceCpf);
+//	}
+//	
+//	public static void consultServicesRelatedToCustomer(String customerServiceCpf) {
+//    	
+//        for (int i = 0; i < customerList.size(); i++) {
+//        	
+//        	if (customerList.get(i).getCpf().equals(customerServiceCpf)) {
+//        		
+//        		Customer temporaryCustomer = customerList.get(i);
+//        		
+//        		for (int j = 0; j < temporaryCustomer.serviceListForCustomer.size(); j++) {
+//        			System.out.println(temporaryCustomer.serviceListForCustomer.get(j).getName());
+//        		}
+//        	}
+//
+//        }
+//    }
 	
-	public static void consultServicesRelatedToCustomer(String customerServiceCpf) {
-    	
+	public static JTable consultServicesRelatedToCustomerTable(String cpf) {
+	
+		Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Name");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
         for (int i = 0; i < customerList.size(); i++) {
         	
-        	if (customerList.get(i).getCpf().equals(customerServiceCpf)) {
+        	if (customerList.get(i).getCpf().equals(cpf)) {
         		
         		Customer temporaryCustomer = customerList.get(i);
         		
         		for (int j = 0; j < temporaryCustomer.serviceListForCustomer.size(); j++) {
-        			System.out.println(temporaryCustomer.serviceListForCustomer.get(j).getName());
+        			model.addRow(new Object[]{temporaryCustomer.serviceListForCustomer.get(j).getName()});
         		}
         	}
 
         }
-    }
+    	return table;
+	}
 	
 	public static void consultActive() {
     	
@@ -324,6 +399,50 @@ public class CustomerManager {
         }
     }
 	
+	public static JTable consultActiveTable() {
+		Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Name");
+        columnNames.addElement("CPF");
+        columnNames.addElement("Phone Number");
+        columnNames.addElement("Email");
+        columnNames.addElement("Birthday");
+        columnNames.addElement("Gender");
+        columnNames.addElement("Marital Status");
+        columnNames.addElement("Status");
+        columnNames.addElement("City");
+        columnNames.addElement("State");
+        columnNames.addElement("Street");
+        columnNames.addElement("Number");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < customerList.size(); i++) {
+        	if(customerList.get(i).getStatus().equals("ACTIVE")) {
+        		model.addRow(new Object[]{
+        			customerList.get(i).getName(),
+        			customerList.get(i).getCpf(),
+        			customerList.get(i).getPhoneNumber(),
+        			customerList.get(i).getEmail(),
+        			sdf.format(customerList.get(i).getBirthday()),
+        			customerList.get(i).getGender(),
+        			customerList.get(i).getMaritalStatus(),
+        			customerList.get(i).getStatus(),
+        			"City: " + customerList.get(i).getAddress().getCity(),
+        			"State: " + customerList.get(i).getAddress().getState(),
+        			"Street: " + customerList.get(i).getAddress().getStreet(),
+        			"Number: " + customerList.get(i).getAddress().getNumber()
+        			});
+        	}
+        }
+    	return table;
+	}
+	
 	public static void consultInactive() {
     	
         for (int i = 0; i < customerList.size(); i++) {
@@ -345,6 +464,50 @@ public class CustomerManager {
         	}
         }
     }
+	
+	public static JTable consultInactiveTable() {
+		Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Name");
+        columnNames.addElement("CPF");
+        columnNames.addElement("Phone Number");
+        columnNames.addElement("Email");
+        columnNames.addElement("Birthday");
+        columnNames.addElement("Gender");
+        columnNames.addElement("Marital Status");
+        columnNames.addElement("Status");
+        columnNames.addElement("City");
+        columnNames.addElement("State");
+        columnNames.addElement("Street");
+        columnNames.addElement("Number");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < customerList.size(); i++) {
+        	if(customerList.get(i).getStatus().equals("INACTIVE")) {
+        		model.addRow(new Object[]{
+        			customerList.get(i).getName(),
+        			customerList.get(i).getCpf(),
+        			customerList.get(i).getPhoneNumber(),
+        			customerList.get(i).getEmail(),
+        			sdf.format(customerList.get(i).getBirthday()),
+        			customerList.get(i).getGender(),
+        			customerList.get(i).getMaritalStatus(),
+        			customerList.get(i).getStatus(),
+        			"City: " + customerList.get(i).getAddress().getCity(),
+        			"State: " + customerList.get(i).getAddress().getState(),
+        			"Street: " + customerList.get(i).getAddress().getStreet(),
+        			"Number: " + customerList.get(i).getAddress().getNumber()
+        			});
+        	}
+        }
+    	return table;
+	}
 	
 	public static void editAction(Customer customer) {
 		

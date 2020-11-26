@@ -1,26 +1,20 @@
 package Views.ModuleCustomerActionsView;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-
-import Views.ModuleCustomerView;
-import application.mainMenu;
-
-import manager.CustomerManager;
-
 import java.awt.Font;
-import java.awt.ScrollPane;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.SwingConstants;
 
-public class ConsultCustomerView {
+import Views.ModuleCustomerView;
+import manager.CustomerManager;
+
+public class InactivesCustomerView {
 
 	private JFrame frame;
 	private JTable table;
@@ -32,7 +26,7 @@ public class ConsultCustomerView {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ConsultCustomerView window = new ConsultCustomerView();
+					InactivesCustomerView window = new InactivesCustomerView();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -44,7 +38,7 @@ public class ConsultCustomerView {
 	/**
 	 * Create the application.
 	 */
-	public ConsultCustomerView() {
+	public InactivesCustomerView() {
 		initialize();
 	}
 
@@ -53,23 +47,22 @@ public class ConsultCustomerView {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1310, 345);
+		frame.setBounds(100, 100, 1310, 350);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblConsultCustomer = new JLabel("CONSULT CUSTOMER");
-		lblConsultCustomer.setBounds(10, 0, 1274, 39);
-		lblConsultCustomer.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblConsultCustomer.setHorizontalAlignment(SwingConstants.CENTER);
-		frame.getContentPane().add(lblConsultCustomer);
+		JLabel lblTitle = new JLabel("COSTUMERS INACTIVES");
+		lblTitle.setBounds(0, 0, 1284, 27);
+		lblTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		lblTitle.setFont(new Font("Tahoma", Font.PLAIN, 22));
+		frame.getContentPane().add(lblTitle);
 		
-		table = CustomerManager.consultAndInputInTable();
-		table.setBounds(44, 50, 1200, 195);
-		frame.getContentPane().add(table.getTableHeader(), BorderLayout.NORTH);
+		table = CustomerManager.consultInactiveTable();
+		table.setBounds(47, 38, 1200, 236);
 		frame.getContentPane().add(table);
 		
-		JButton btnBack = new JButton("Back");
-		btnBack.setBounds(604, 272, 89, 23);
+		JButton btnBack = new JButton("BACK");
+		btnBack.setBounds(594, 285, 89, 23);
 		frame.getContentPane().add(btnBack);
 		btnBack.addActionListener(new ActionListener() {
 			
@@ -78,5 +71,10 @@ public class ConsultCustomerView {
 				frame.dispose();
 			}
 		});
+		
+		
+		
+		
 	}
+
 }

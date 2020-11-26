@@ -16,11 +16,13 @@ import javax.swing.border.EmptyBorder;
 import application.mainMenu;
 import manager.EmployeeManager;
 import manager.ServiceManager;
+import javax.swing.JTable;
 
 public class ConsultEmployeeView extends JFrame {
 
 	private JPanel contentPane;
 	public static JLabel labelTextConsult;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -49,38 +51,31 @@ public class ConsultEmployeeView extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		labelTextConsult = new JLabel();
-		labelTextConsult.setBounds(27, 58, 409, 141);
-		contentPane.add(labelTextConsult);
-		
 		JLabel lblNewLabel = new JLabel("CONSULT");
 		lblNewLabel.setBounds(5, 5, 424, 32);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		contentPane.add(lblNewLabel);
 		
-		labelTextConsult = new JLabel();
-		labelTextConsult.setBounds(20, 61, 409, 141);
-		contentPane.add(labelTextConsult);
+//		labelTextConsult = new JLabel();
+//		labelTextConsult.setBounds(20, 61, 409, 141);
+//		contentPane.add(labelTextConsult);
 		
-		JButton btnNewButton = new JButton("Consult employees");
-		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		btnNewButton.setBounds(78, 201, 176, 52);
-		contentPane.add(btnNewButton);
+//		JButton btnNewButton = new JButton("Consult employees");
+//		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
+//		btnNewButton.setBounds(101, 221, 153, 32);
+//		contentPane.add(btnNewButton);
+//		btnNewButton.addActionListener(new ActionListener() {
+//			
+//			public void actionPerformed(ActionEvent e) {
+//				EmployeeManager.consult();
+//			}
+//		});
 		
 		JButton btnNewButtonMenu = new JButton("Menu");
 		btnNewButtonMenu.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnNewButtonMenu.setBounds(277, 209, 105, 34);
+		btnNewButtonMenu.setBounds(158, 218, 99, 32);
 		contentPane.add(btnNewButtonMenu);
-		
-		btnNewButton.addActionListener(new ActionListener() {
-			
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("CONSULT ACIONADO.");
-				EmployeeManager.consult();
-			}
-		});
-		
 		btnNewButtonMenu.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
@@ -88,5 +83,10 @@ public class ConsultEmployeeView extends JFrame {
 				mainMenu.main(null);
 			}
 		});
+		
+		table = EmployeeManager.consultIntoTable();
+		table.setBounds(71, 48, 325, 154);
+		contentPane.add(table);
+		
 	}
 }

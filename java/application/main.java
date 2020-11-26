@@ -52,7 +52,7 @@ public class main {
 					break;
 					
 				case 5:
-					ServiceManager.menuManager();
+//					ServiceManager.menuManager();
 					break;
 					
 				case 6:
