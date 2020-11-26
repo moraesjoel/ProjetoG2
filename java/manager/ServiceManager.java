@@ -42,30 +42,7 @@ public class ServiceManager {
         serviceList.add(service);
 
     }
-    //public static void consult() {
-//        String serviceNameFromList = "";
-//        
-//        if(serviceList.isEmpty()) {
-//        	serviceNameFromList = "Lista de seriços vazia!";
-//        } else {
-//        	for (int i = 0; i < serviceList.size(); i++) {
-//                System.out.println("\nService: " + serviceList.get(i).getName());
-//                serviceNameFromList += "\n" + serviceList.get(i).getName() + " ";
-//                
-//            }
-//        }
-//        //ConsultView.labelTextConsult.setText(serviceNameFromList);
-//     
-//        Vector<String> row = new Vector<String>();
-//        
-//        Vector<String> columnNames = new Vector<String>();
-//        columnNames.addElement("Service Name");
-//        
-//        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
-//        rowData.addElement(row);
-        
-        
- // }
+
     
     
     public static JTable consultAndInputInTable() {

@@ -171,8 +171,6 @@ public class CustomerManager {
     }
     
     public static void edit() throws ParseException{
-        System.out.println("Type the customer CPF to edit it: ");
-
         String customerToEdit = EditCustomerView.textFieldCpfToEdit.getText();
         
         for (int i = 0; i < customerList.size(); i++) {

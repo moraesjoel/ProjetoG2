@@ -9,7 +9,7 @@ public class CustomerService {
 	private Date hourOfService;
 	private Customer customer;
 	private Employee employee;
-	private CustomerServiceStatus status;
+	private String status;
 	private String serviceStatus;
 	private Service description;
 	
@@ -60,12 +60,12 @@ public class CustomerService {
 		this.employee = employee;
 	}
 
-	public CustomerServiceStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(CustomerServiceStatus status) {
-		this.status = status;
+	public void setStatus(String optionStatus) {
+		this.status = optionStatus;
 	}
 
 	public String getServiceStatus() {

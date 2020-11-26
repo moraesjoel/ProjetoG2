@@ -55,7 +55,7 @@ public class ScheduleServiceView extends JFrame {
 	 */
 	public ScheduleServiceView() {
 		//setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 370);
+		setBounds(100, 100, 468, 370);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -144,11 +144,11 @@ public class ScheduleServiceView extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButtonVerifyCustomer = new JButton("Verify");
-		btnNewButtonVerifyCustomer.setBounds(366, 173, 59, 21);
+		btnNewButtonVerifyCustomer.setBounds(366, 173, 76, 21);
 		contentPane.add(btnNewButtonVerifyCustomer);
 		
 		JButton btnNewButtonVerifyDescription = new JButton("Verify");
-		btnNewButtonVerifyDescription.setBounds(377, 95, 59, 21);
+		btnNewButtonVerifyDescription.setBounds(377, 95, 65, 21);
 		contentPane.add(btnNewButtonVerifyDescription);
 		
 		btnNewButtonVerifyDescription.addActionListener(new ActionListener() {
@@ -161,7 +161,7 @@ public class ScheduleServiceView extends JFrame {
 		});
 		
 		JButton btnNewButtonVerifyEmployee = new JButton("Verify");
-		btnNewButtonVerifyEmployee.setBounds(366, 212, 59, 21);
+		btnNewButtonVerifyEmployee.setBounds(366, 212, 76, 21);
 		contentPane.add(btnNewButtonVerifyEmployee);
 		
 		btnNewButtonVerifyEmployee.addActionListener(new ActionListener() {

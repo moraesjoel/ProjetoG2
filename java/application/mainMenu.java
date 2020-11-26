@@ -9,8 +9,10 @@ import javax.swing.border.EmptyBorder;
 
 import Views.ModuleCustomerView;
 import Views.ModuleEmployeeView;
+import Views.ModuleServiceScheduleView;
 import Views.ModuleServiceView;
 import Views.ScheduleServiceView;
+import Views.ModuleScheduleActionsView.ConsultServiceScheduleView;
 import entities.Address;
 import entities.Customer;
 import entities.Employee;
@@ -64,16 +66,21 @@ public class mainMenu extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("O botão foi clicado e o conteúdo digitado pelo usuário.");
 				ScheduleServiceView.main(null);
 			}
 		});
 		
-		JButton btnShowScheduleFor = new JButton("Show Schedule for date");
+		JButton btnShowScheduleFor = new JButton("Show Schedule");
 		btnShowScheduleFor.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnShowScheduleFor.setBounds(234, 10, 194, 75);
 		contentPane.add(btnShowScheduleFor);
-		
+		btnShowScheduleFor.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ConsultServiceScheduleView.main(null);
+			}
+		});
 		JButton btnNewButton_2_1 = new JButton("Module Employee");
 		btnNewButton_2_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		btnNewButton_2_1.setBounds(21, 108, 194, 75);
@@ -81,7 +88,6 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_1.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Acessando modulo Employee.");
 				dispose();
 				ModuleEmployeeView.main(null);
 			}
@@ -94,7 +100,6 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_2.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Acessando modulo Customer.");
 				dispose();
 				ModuleCustomerView.main(null);
 			}
@@ -107,8 +112,6 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_1_1.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("O botão foi clicado e o conteúdo digitado pelo usuário.");
-				//setVisible(false);
 				dispose();
 				ModuleServiceView.main(null);				
 				
@@ -119,5 +122,13 @@ public class mainMenu extends JFrame {
 		btnNewButton_2_1_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		btnNewButton_2_1_2.setBounds(234, 206, 194, 75);
 		contentPane.add(btnNewButton_2_1_2);
+		btnNewButton_2_1_2.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				ModuleServiceScheduleView.main(null);				
+				
+			}
+		});
 	}
 }

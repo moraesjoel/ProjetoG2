@@ -4,7 +4,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.Vector;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import Views.ModuleServiceScheduleView;
 import Views.ModuleServiceView;
 import Views.ScheduleServiceView;
 import Views.InsertNewModules.InsertNewCustomer;
@@ -12,6 +17,9 @@ import Views.InsertNewModules.InsertNewEmployee;
 import Views.InsertNewModules.InsertNewService;
 import Views.ModuleCustomerActionsView.InsertCustomerView;
 import Views.ModuleEmployeeActionsView.InsertEmployeeView;
+import Views.ModuleScheduleActionsView.EditScheduleView;
+import Views.ModuleScheduleActionsView.RemoveServiceScheduleView;
+import Views.ModuleScheduleActionsView.ScheduleServiceDateHourView;
 import Views.ModuleServiceActionsView.InsertView;
 
 import java.util.Date;
@@ -80,7 +88,7 @@ public class CustomerServiceManager {
         
         readAndSetCustomerServiceDescription(customerService);
         
-    	//readAndSetCustomerServiceStatus(customerService);
+    	readAndSetCustomerServiceStatus(customerService);
 
     	readAndSetCustomerServiceCustomerName(customerService);
 
@@ -105,28 +113,53 @@ public class CustomerServiceManager {
         }
     }
     
-    public static void remove() throws ParseException {
-    	System.out.println("\nRemove a customer service \n ");
-		
-        System.out.println("Type the customer service date: ");
-        String costumerServiceDateToRemove = reader.nextLine();
-        customerServiceDateFormattedToRemove = sdf.parse(costumerServiceDateToRemove);
+    public static JTable consultAndInputInTable() {
+    	Vector<String> row = new Vector<String>();
+        
+        Vector<String> columnNames = new Vector<String>();
+        columnNames.addElement("Date");
+        columnNames.addElement("Hour");
+        columnNames.addElement("Description");
+        columnNames.addElement("Status");
+        columnNames.addElement("Customer");
+        columnNames.addElement("Employee");
+        
+        Vector<Vector<String>> rowData = new Vector<Vector<String>>();
+        rowData.addElement(row);
+        
+        JTable table = new JTable(rowData, columnNames);
+        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        for (int i = 0; i < customerServiceList.size(); i++) {
+        	model.addRow(new Object[]{
+        			sdf.format(customerServiceList.get(i).getDateOfService()),
+        			sdf2.format(customerServiceList.get(i).getHourOfService()),
+        			customerServiceList.get(i).getDescription().getName(),
+        			customerServiceList.get(i).getStatus(),
+        			customerServiceList.get(i).getCustomer().getName(),
+        			customerServiceList.get(i).getEmployee().getName()
+        			});
+        }
+    	return table;
+    }
+    
+    public static void remove() throws ParseException {		
        
-        System.out.println("Type the customer service hour: ");
-        String costumerServiceHourToRemove = reader.nextLine();
-        customerServiceHourFormattedToRemove = sdf2.parse(costumerServiceHourToRemove);
+    	String customerServiceDateToRemove = RemoveServiceScheduleView.textFieldDate.getText();	
+        customerServiceDateFormattedToRemove = sdf.parse(customerServiceDateToRemove);
+	    
+	    String customerServiceHourToRemove = RemoveServiceScheduleView.textFieldHour.getText();	
+	    customerServiceHourFormattedToRemove = sdf2.parse(customerServiceHourToRemove);
         
         removeCustomerService(customerServiceDateFormattedToRemove, customerServiceHourFormattedToRemove);
         
     }
     
     public static void edit() throws ParseException{
-        System.out.println("Type the customer service date to edit it: ");
-        String serviceDateToEdit = reader.nextLine();
+        String serviceDateToEdit = ScheduleServiceDateHourView.textFieldDate.getText();
         customerServiceDateFormattedToEdit = sdf.parse(serviceDateToEdit);
         
-        System.out.println("\nType the customer service hour to edit it: ");
-        String serviceHourToEdit = reader.nextLine();
+        String serviceHourToEdit = ScheduleServiceDateHourView.textFieldHour.getText();
         customerServiceHourFormattedToEdit = sdf2.parse(serviceHourToEdit);
 
         for (int i = 0; i < customerServiceList.size(); i++) {
@@ -136,6 +169,8 @@ public class CustomerServiceManager {
             }
         }
     }
+    
+    
     
     private static void removeCustomerService(Date serviceDateToRemove, Date serviceHourToRemove) throws ParseException {
     	boolean validate = false;
@@ -149,7 +184,7 @@ public class CustomerServiceManager {
     	
     	if (validate == false) {
     		System.out.println("Customer service at this time does not exist! Try again.");
-    		remove();
+    		ModuleServiceScheduleView.main(null);
     	}
     }
     
@@ -240,6 +275,7 @@ public class CustomerServiceManager {
     protected static void readAndSetCustomerServiceStatus(CustomerService customerService) throws NullPointerException{
 		try {
 			optionStatus = (String) ScheduleServiceView.comboBoxStatus.getSelectedItem();
+			customerService.setStatus(optionStatus);
 		} catch (NullPointerException e) {
 			System.out.println("Exception!!!" + e);
 		}
@@ -336,48 +372,85 @@ public class CustomerServiceManager {
     
     
     private static void menuEdit(CustomerService customerService) throws ParseException {
-		 int option = 1;
-		 int action = 1;
+    	readAndSetcustomerServiceDateEdit(customerService);
 
-		 while (option == 1) {
-				System.out.println("Choose the option: 1 - Edit date | 2 - Edit hour | 3 - Edit description | 4 - Edit Status | 5 - Edit customer name | "
-						+ "6 - Edit customer service employee");
-				
-				action = reader.nextInt();
-				
-				
-				switch (action) {
-					case 1:
-						readAndSetCustomerServiceDate(customerService);
-						break;
-						
-					case 2:
-						readAndSetCustomerServiceHour(customerService);
-						break;
-						
-					case 3:
-						readAndSetCustomerServiceDescription(customerService);
-						break;
-						
-					case 4:
-						readAndSetCustomerServiceStatus(customerService);
-						break;
-						
-					case 5:
-						readAndSetCustomerServiceCustomerName(customerService);
-						break;
-						
-					case 6:
-						readAndSetCustomerServiceEmployee(customerService);
-						break;
-				    	
-				}
-				
-				System.out.println("Do you want to leave from the edit mode? 1 - NO  2 - YES ");
-				option = reader.nextInt();
-				
-			}
+        readAndSetcustomerServiceHourEdit(customerService);
+
+        readAndSetcustomerServiceDescriptionNumberEdit(customerService);
+
+        readAndSetcustomerServiceStatusEdit(customerService);
+        
+        readAndSetcustomerServiceCustomerEdit(customerService);
+        
+        readAndSetcustomerServiceEmployeeEdit(customerService);
+        
+        addServiceToServiceListforCustomerFromEdit(customerService);
+        
+        consult();
+        
 	 }
+    
+    protected static void readAndSetcustomerServiceDateEdit(CustomerService customerService) throws ParseException{
+	    String customerServiceDateEdit = EditScheduleView.textFieldDate.getText();	
+	    Date customerServiceDateFormattedEdit = sdf.parse(customerServiceDateEdit);
+	    	   
+	    customerService.setDateOfService(customerServiceDateFormattedEdit);
+	}
+    
+    protected static void readAndSetcustomerServiceHourEdit(CustomerService customerService) throws ParseException{
+	    String customerServiceHourEdit = EditScheduleView.textFieldHour.getText();	
+	    Date customerServiceHourFormattedEdit = sdf2.parse(customerServiceHour);
+	    	   
+	    customerService.setDateOfService(customerServiceHourFormatted);
+	}
+    
+    protected static void readAndSetcustomerServiceDescriptionNumberEdit(CustomerService customerService) throws ParseException{
+    	serviceDescription = EditScheduleView.textFieldDescription.getText();
+    	
+	    int j;
+	    for (j = 0; j < ServiceManager.serviceList.size(); j++) {
+            if (ServiceManager.serviceList.get(j).getName().equals(serviceDescription)) {
+            	customerService.setDescription(ServiceManager.serviceList.get(j));
+            } 
+        }
+	}
+    
+    protected static void readAndSetcustomerServiceStatusEdit(CustomerService customerService) throws ParseException{
+    	try {
+    		optionStatus = (String) EditScheduleView.comboBox.getSelectedItem();
+    		customerService.setStatus(optionStatus);
+    	} catch (NullPointerException e) {
+    		e.printStackTrace();
+    	}
+	}
+    
+    protected static void readAndSetcustomerServiceCustomerEdit(CustomerService customerService) throws ParseException{
+    	customerServiceCpf = EditScheduleView.textFieldCustomerCpf.getText();	
+	    
+	    int i;
+	    for (i = 0; i < CustomerManager.customerList.size(); i++) {
+            if (CustomerManager.customerList.get(i).getCpf().equals(customerServiceCpf)) {
+            	customerService.setCustomer(CustomerManager.customerList.get(i));
+            }
+        }
+	}
+    
+    protected static void readAndSetcustomerServiceEmployeeEdit(CustomerService customerService) throws ParseException{
+	    employeeServiceCpf = EditScheduleView.textFieldEmployeeCpf.getText();	
+	    int j;
+	    for (j = 0; j < EmployeeManager.employeeList.size(); j++) {
+            if (EmployeeManager.employeeList.get(j).getCpf().equals(employeeServiceCpf)) {
+            	customerService.setEmployee(EmployeeManager.employeeList.get(j));
+            } 
+        }
+	  
+	}
+    
+    
+    protected static void addServiceToServiceListforCustomerFromEdit(CustomerService customerservice) {
+    	Customer.serviceListForCustomer.add(customerservice.getDescription());
+    	
+    }
     
     public static void menuManager() throws ParseException {
         int option = 1;
